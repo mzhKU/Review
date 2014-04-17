@@ -1,0 +1,45 @@
+\documentclass{psp-book9x6}
+\usepackage{psp-book-har}           
+\usepackage{subfigure,bm}
+\copyline{Book Title}{Editor Name}{Year}
+
+\title{Book Title}              
+\makeindex
+
+\begin{document}
+
+\titlepages                       
+
+\begin{dedication}
+\large Dedication Page \\[13pt]
+\large (optional)
+\end{dedication}
+
+\input 010-pref.tex                 
+%\input foreword.tex               
+%\input acknowledgments.tex        
+\tableofcontents
+
+% Optional list of figures
+%\listoffigures                    
+
+% Optional list of tables
+%\listoftables                     
+
+\setcounter{page}{1}
+
+% Optional divider page
+%\part{First Part}{}               
+
+\input 010-main.tex
+
+% Optional divider page
+%\part{Second Part}{}              
+%\input chapter2.tex
+
+% Bibliography: Author-Date system
+\bibliographystyle{psp-book-har}    
+\bibliography{psp-book-sample}      
+
+\printindex
+\end{document}
