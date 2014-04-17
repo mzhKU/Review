@@ -1,4 +1,4 @@
-\begin{thebibliography}{0}
+\begin{thebibliography}{4}
 \newcommand{\enquote}[1]{#1}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -7,5 +7,31 @@
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
+
+\bibitem{hermann2009high}
+Hermann, J., Pradon, J., Harvey, J. and Mulholland, A. (2009). \enquote{{High
+  Level QM/MM Modeling of the Formation of the Tetrahedral Intermediate in the
+  Acylation of Wild Type and K73A Mutant TEM-1 Class A $\beta$-Lactamase},}
+  \emph{The Journal of Physical Chemistry A} \textbf{113}, 43, pp.
+  11984--11994.
+
+\bibitem{noodleman2004quantum}
+Noodleman, L., Lovell, T., Han, W., Li, J. and Himo, F. (2004).
+  \enquote{{Quantum chemical studies of intermediates and reaction pathways in
+  selected enzymes and catalytic synthetic systems},} \emph{Chemical reviews}
+  \textbf{104}, 2, pp. 459--508.
+
+\bibitem{Siegel2010}
+Siegel, J.~B., Zanghellini, A., Lovick, H.~M., Kiss, G., Lambert, A.~R.,
+  St.Clair, J.~L., Gallaher, J.~L., Hilvert, D., Gelb, M.~H., Stoddard, B.~L.,
+  Houk, K.~N., Michael, F.~E. and Baker, D. (2010). \enquote{Computational
+  design of an enzyme catalyst for a stereoselective bimolecular diels-alder
+  reaction,} \emph{Science} \textbf{329}, 5989, pp. 309--313,
+  \doi{10.1126/science.1190239},
+  \urlprefix\url{http://www.sciencemag.org/content/329/5989/309.abstract}.
+
+\bibitem{stewart1990mopac}
+Stewart, J. (1990). \enquote{Mopac: a semiempirical molecular orbital program,}
+  \emph{Journal of Computer-Aided Molecular Design} \textbf{4}, 1, pp. 1--103.
 
 \end{thebibliography}
