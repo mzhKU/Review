@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{2}
 \newcommand{\enquote}[1]{#1}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -7,6 +7,12 @@
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
+
+\bibitem{claeyssens2006high}
+Claeyssens, F., Harvey, J., Manby, F., Mata, R., Mulholland, A., Ranaghan, K.,
+  Sch{\"u}tz, M., Thiel, S., Thiel, W. and Werner, H. (2006).
+  \enquote{{High-Accuracy Computation of Reaction Barriers in Enzymes},}
+  \emph{Angewandte Chemie} \textbf{118}, 41, pp. 7010--7013.
 
 \bibitem{meyer2013use}
 Meyer, H.-P., Eichhorn, E., Hanlon, S., L{\"u}tz, S., Sch{\"u}rmann, M.,
