@@ -1,4 +1,4 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{5}
 \newcommand{\enquote}[1]{#1}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -8,13 +8,39 @@
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
 
-\bibitem{claeyssens2006high}
+\bibitem[{Claeyssens \emph{et~al.}(2006)Claeyssens, Harvey, Manby, Mata,
+  Mulholland, Ranaghan, Sch{\"u}tz, Thiel, Thiel and
+  Werner}]{claeyssens2006high}
 Claeyssens, F., Harvey, J., Manby, F., Mata, R., Mulholland, A., Ranaghan, K.,
   Sch{\"u}tz, M., Thiel, S., Thiel, W. and Werner, H. (2006).
   \enquote{{High-Accuracy Computation of Reaction Barriers in Enzymes},}
   \emph{Angewandte Chemie} \textbf{118}, 41, pp. 7010--7013.
 
-\bibitem{meyer2013use}
+\bibitem[{Hediger \emph{et~al.}(2013{\natexlab{a}})Hediger, De~Vico, Rannes,
+  J{\"a}ckel, Besenmatter, Svendsen and Jensen}]{hediger2013silico}
+Hediger, M.~R., De~Vico, L., Rannes, J.~B., J{\"a}ckel, C., Besenmatter, W.,
+  Svendsen, A. and Jensen, J.~H. (2013{\natexlab{a}}). \enquote{In silico
+  screening of 393 mutants facilitates enzyme engineering of amidase activity
+  in calb,} \emph{PeerJ} \textbf{1}, p. e145.
+
+\bibitem[{Hediger \emph{et~al.}(2012)Hediger, De~Vico, Svendsen, Besenmatter
+  and Jensen}]{10.1371/journal.pone.0049849}
+Hediger, M.~R., De~Vico, L., Svendsen, A., Besenmatter, W. and Jensen, J.~H.
+  (2012). \enquote{A computational methodology to screen activities of enzyme
+  variants,} \emph{PLoS ONE} \textbf{7}, 12, p. e49849,
+  \doi{10.1371/journal.pone.0049849},
+  \urlprefix\url{http://dx.doi.org/10.1371%2Fjournal.pone.0049849}.
+
+\bibitem[{Hediger \emph{et~al.}(2013{\natexlab{b}})Hediger, Steinmann, De~Vico
+  and Jensen}]{hediger2013computational}
+Hediger, M.~R., Steinmann, C., De~Vico, L. and Jensen, J.~H.
+  (2013{\natexlab{b}}). \enquote{A computational method for the systematic
+  screening of reaction barriers in enzymes: searching for bacillus circulans
+  xylanase mutants with greater activity towards a synthetic substrate,}
+  \emph{PeerJ} \textbf{1}, p. e111.
+
+\bibitem[{Meyer \emph{et~al.}(2013)Meyer, Eichhorn, Hanlon, L{\"u}tz,
+  Sch{\"u}rmann, Wohlgemuth and Coppolecchia}]{meyer2013use}
 Meyer, H.-P., Eichhorn, E., Hanlon, S., L{\"u}tz, S., Sch{\"u}rmann, M.,
   Wohlgemuth, R. and Coppolecchia, R. (2013). \enquote{The use of enzymes in
   organic synthesis and the life sciences: perspectives from the swiss
