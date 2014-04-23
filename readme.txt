@@ -3,7 +3,7 @@ QM Calculations for Enzyme Activity Screening
 Martin Hediger
 Harm Otten
 
-Style Guide
+Style Guide (recommended)
 ---------------------------------------------
 - Sentences on separate lines
 - Spell in full abbreviations if first word of
@@ -16,8 +16,8 @@ File Guide
 ---------------------------------------------
 000-main.tex: Main PDF output file
 010-main.tex: Chapter file
-999-*.tex: Backup files
-
+999-*.tex:    Backup files
+040-*.*:      Figures
 
 Compilation
 ---------------------------------------------
