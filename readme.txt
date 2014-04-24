@@ -25,3 +25,8 @@ Compilation
 (2) pdflatex 000-main
 (3) bibtex   000-main
 (5) pdflatex 000-main
+
+Git commands
+---------------------------------------------
+Check if local repo up to date with remote:
+git fetch -v --dry-run
