@@ -28,5 +28,6 @@ Compilation
 
 Git commands
 ---------------------------------------------
-Check if local repo up to date with remote:
+Check for updates between remote and local:
 git fetch -v --dry-run
+git remote -v update
