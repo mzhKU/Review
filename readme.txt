@@ -26,8 +26,14 @@ Compilation
 (3) bibtex   000-main
 (5) pdflatex 000-main
 
-Git commands
+Useful git commands
 ---------------------------------------------
-Check for updates between remote and local:
+Check if pull required:
 git fetch -v --dry-run
 git remote -v update
+
+Check commits which are not yet pushed to remote:
+git log --branches --not --remotes
+
+Only most recent:
+git log --branches --not --remotes --simplify-by-decoration --decorate --oneline
