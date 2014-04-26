@@ -16,8 +16,9 @@ File Guide
 ---------------------------------------------
 000-main.tex: Main PDF output file
 010-main.tex: Chapter file
-999-*.tex:    Backup files
-040-*.*:      Figures
+999-*.tex   : Backup files
+040-*.*     : Figures
+pages.txt:  : Links collection file
 
 Compilation
 ---------------------------------------------
