@@ -43,6 +43,13 @@ In another form, the substrate is constant but the enzyme can vary.
 The approaches to this task, as it appears, are much less established.
 The reasons are manifold, primarily it appears that modeling of an enzyme is less straightforward than a small inhibiting molecule.
 Again, why is that?
+
+As is known in the community, enzymes behave highly non-predictable.
+The best reasoning about a mutation (except for elimination of the catalytic residues) will not even allow to decide \textit{qualitatively} if the mutated enzyme will be more or less active.
+Shifts in pH optima might be predicted more readily\cite{ludwiczek2013strategies}.
+It is proposed therefore that in cases where no \textit{a priori} knowledge about how an enzyme should be engineered is available, the only reasonable strategy is to carry out systematic screening studies.
+For these to be feasible, either the computer power needs to be very large or the method has to be fast, there is an inherent trade off in this situation.
+Once initial lead structures are identified, higher level methods can be used to narrow down on most promising candidates.
 % *************************************************************************
 
 
@@ -62,7 +69,7 @@ Practical applicability of QM based enzyme screening has a couple of problems:
 \item If the mechanism is not established, the reaction can usually follow various pathways -- these would need to be checked in order to find a best guess at the rate determining step
 \item Identification of the transition state is difficult and depends intimatly on the structure, optimizing two structures differing by 0.1 \AA in a particular bond length can result in identification or not identification of the TS
 \item \textit{Every method has it's chemistry}. The results of one QM chemistry need to be verified, usually high-level standard reference methods are computationally too demanding to be applicable to a large system
-\item Modeling software is available, PyMOL, Schr\"odinger, Chem?? (Walter Thiel, commercially) but everything is still very much custom work, this is probably the major reason preventing the use of QM as standard method in industry. Compare docking and MD methods have software which is designed towards user friendlyness and has become established in industry
+\item Modeling software is available, PyMOL, Schr\"odinger, Chem?? (Walter Thiel, commercially) but everything is still very much custom work (especially the data analysis, programs output format is like from last century), this is probably the major reason preventing the use of QM as standard method in industry. Compare docking and MD methods have software which is designed towards user friendlyness and has become established in industry
 \item GTKDynamo is an exceptionally good example for what it should look like, unfortunately only small community
 \item Many papers claim that ``\textit{future developments are directed at further automating the presented approach}''.
 Obviously these remarks are directed at making the method industrially applicable by avoiding the requirement to carry out complicated setup and configuration steps\cite{rathore2013advances}.
@@ -115,4 +122,7 @@ If the mechanism is not established, the method can just as well be used to outl
 \subsection{Interesting QM/MM applications}
 \textbf{The cocaine hydrolase guys}\\
 Make a cocaine hydrolase better\cite{gao2006computational}.
+
+\subsection{Requirements for advancement of methods}
+Experimental catalytic data ($k_\text{cat}$) of many mutants to validate against.
 % *************************************************************************

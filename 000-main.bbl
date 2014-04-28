@@ -1,4 +1,4 @@
-\begin{thebibliography}{14}
+\begin{thebibliography}{15}
 \newcommand{\enquote}[1]{#1}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -70,6 +70,14 @@ Hediger, M.~R., Steinmann, C., De~Vico, L. and Jensen, J.~H.
 Kirk, O., Borchert, T.~V. and Fuglsang, C.~C. (2002). \enquote{Industrial
   enzyme applications,} \emph{Current opinion in biotechnology} \textbf{13}, 4,
   pp. 345--351.
+
+\bibitem[{Ludwiczek \emph{et~al.}(2013)Ludwiczek, D’Angelo, Yalloway,
+  Brockerman, Okon, Nielsen, Strynadka, Withers and
+  McIntosh}]{ludwiczek2013strategies}
+Ludwiczek, M.~L., D’Angelo, I., Yalloway, G.~N., Brockerman, J.~A., Okon, M.,
+  Nielsen, J.~E., Strynadka, N.~C., Withers, S.~G. and McIntosh, L.~P. (2013).
+  \enquote{Strategies for modulating the ph-dependent activity of a family 11
+  glycoside hydrolase,} \emph{Biochemistry} \textbf{52}, 18, pp. 3138--3156.
 
 \bibitem[{Meyer \emph{et~al.}(2013)Meyer, Eichhorn, Hanlon, L{\"u}tz,
   Sch{\"u}rmann, Wohlgemuth and Coppolecchia}]{meyer2013use}
