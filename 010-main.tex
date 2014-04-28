@@ -13,23 +13,36 @@ harm.otten@maxlab.lu.se}}
 % *************************************************************************
 \section{Motivation}\label{sec:mot}
 Let us imagine two companies A and B.
-Both companies use very similar technical equipment to carry out a biotechnological process where a chemical reaction is catalyzed by an enzyme.
+Both companies use very similar technical equipment to carry out the biotechnological process $\ce{a}$ $\xrightarrow{Enzyme}$ $\ce{b}$ using two individual versions of the indicated catalyst.
 Company A uses an enzyme with a rate constant $k_\text{A} = 1000s^{-1}$ while company B uses an enzyme with $k_\text{B} = 2000s^{-1}$.
 Letting all other things be equal, the process of company B will therefore only require half the time to produce one Mole of product compared to the time required for company A.
-Company B therefore can save energy required to heat up the reaction volume, the commercial implications of this are immediate.\\
-The need for efficient catalysts arises from such an outline.\footnote{We use the terms \textit{enzme} and \textit{bio-}/\textit{catalyst} interchangeably.}
+Company B therefore can save energy required to keep the reaction volume at a certain temperature.
+The need for efficient catalysts arises from such an outline and the commercial implications of these considerations are immediate.\footnote{We use the terms \textit{enzme} and \textit{bio-}/\textit{catalyst} interchangeably.}\\
 Increasing the performance of enzymes however is still far from trivial and forms a growing body of research.
-What is clear though is that the development of such catalysts is costly, in terms of manpower, material and energy -- if it is carried out in the laboratory.
+What is clear though is that the development of such catalysts is costly, in terms of manpower, material and energy -- if carried out in the laboratory.
 A number of companies have in fact formed around this demand: Novozymes (DK), Genzyme (US) or DSM (NL) to name but a few\cite{meyer2013use}.\\
-The laboratory costs can however be saved to a large part if the development is carried out \textit{in silico}.
+Laboratory costs can however be saved to a large part if the development is carried out \textit{in silico}.
 The proof that computational results are as reliable as experimental results has been provided not too long ago\cite{claeyssens2006high}.
+The foundation for successful application of computational enzyme engineering has thus been laid out.
+It is therefore natural to ask: Why hasn't this become more important yet?
+Why are there not more job openings at pharmaceutical and biotechnology companies looking for computational enzyme engineers?
+The field, after all, did receive the Nobel price in Chemistry 2013.\\
+By giving an overview and some details in this article, we hope to also, at least in part, answer these questions.
 % *************************************************************************
 
 
 % *************************************************************************
 % *************************************************************************
 \section{Introduction}\label{sec:intro}
-We provide an introduction into the topic of enzyme catalysis modeling for interested people from inside and outside of the field.
+We provide an introduction into the topic of enzyme catalysis modeling for interested people from inside and outside of the field.\\
+We outline the latest achievements, methods in use and outline required developments to establish computational enzyme engineering not only in the literature, but also in (commercial) practice.\\
+Modeling involving enzymes happens in different forms.
+In one form, the enzyme is a constant parameter and the variable is the inhibitor.
+These tasks are usually addressed by docking approaches and studies involving millions of substrates have been published\cite{zhou2010high}.
+In another form, the substrate is constant but the enzyme can vary.
+The approaches to this task, as it appears, are much less established.
+The reasons are manifold, primarily it appears that modeling of an enzyme is less straightforward than a small inhibiting molecule.
+Again, why is that?
 % *************************************************************************
 
 
@@ -42,6 +55,7 @@ Molecular mechanics methods allow to study the structural behavior of the enzyme
 The description of chemical reactivity however requires the description of the electronic structure of the system (molecular mechanics models do not allow the description of bond formation and braking processes).
 In this regime, again a number of specialized methods have become available.
 
+\subsection{Idea collection}
 Practical applicability of QM based enzyme screening has a couple of problems:
 \begin{itemize}
 \item The structures of the enzyme in the relevant state of the reaction need to be available, ie. an enzyme-substrate complex (ES) and a transition state (TS) analog (usually an inhibited species)
@@ -49,6 +63,24 @@ Practical applicability of QM based enzyme screening has a couple of problems:
 \item Identification of the transition state is difficult and depends intimatly on the structure, optimizing two structures differing by 0.1 \AA in a particular bond length can result in identification or not identification of the TS
 \item \textit{Every method has it's chemistry}. The results of one QM chemistry need to be verified, usually high-level standard reference methods are computationally too demanding to be applicable to a large system
 \item Modeling software is available, PyMOL, Schr\"odinger, Chem?? (Walter Thiel, commercially) but everything is still very much custom work, this is probably the major reason preventing the use of QM as standard method in industry. Compare docking and MD methods have software which is designed towards user friendlyness and has become established in industry
+\item GTKDynamo is an exceptionally good example for what it should look like, unfortunately only small community
+\item Many papers claim that ``\textit{future developments are directed at further automating the presented approach}''.
+Obviously these remarks are directed at making the method industrially applicable by avoiding the requirement to carry out complicated setup and configuration steps\cite{rathore2013advances}.
+In reality, such future developments, to the great unfortune of the whole field, are rarely realized -- speculation on the reasons is beyond the scope of this article.
+Nevertheless, almost no publication fails to mention the potential applications in drug design.
+\item Computational considerations are only rarely taken into account but greatly help at putting the whole approach into perspective: ``\textit{We do not think that this approach is that relevant for high-throughput screening for several reasons.
+First, the amount of calculations required for a single compound is not scalable to thousands or millions of ligands, and second, because the degree of detail provided by the methodology is probably not needed during the screening phase.
+Instead, we en- visage a successful application in the lead optimization phase on possible tens of lead compounds to completely reconstruct and understand their binding pathways before moving forward in the pipeline.
+The method, although computationally expensive, is certainly feasible if performed on just a few ligands as indicated.
+Here, we have made use of our volunteer GPU project GPUGRID.net (7) based on ACEMD (6).
+Extrapolating from the current study, it would be possible to reconstruct the binding pathways of 5 to 10 ligands per week in-house on a moderately sized GPU cluster of 32–64 GPUs.}''\cite{buch2011complete}
+\end{itemize}
+
+\subsection{Calculation methods}
+Different methods used should be briefly described to make it easier for the reader of the literature to understand what is going on
+\begin{itemize}
+\item AM1/RM1/PM3/PM6/PM7/MOZYME
+\item DFT/B3LYP/Dispersion corrections/M06/...
 \end{itemize}
 % *************************************************************************
 
@@ -75,4 +107,8 @@ While CALB is also known for its reactive promiscuity\cite{CBIC:CBIC200800318}, 
 
 \subsection{\textit{Bacillus circulans} glycoside hydrolase engineering}
 As a proof of concept and to show general applicability of the approach outlined for CalB, the glycoside hydrolase of \textit{Bacillus circulans} is engineered to be catalytically active towards an artifical substrate.
+Importantly, we note that the same method as developed for computational screening of CALB activity could be directly transfered to the study of BCX activity.
+The requirements are that a structure representing a bound intermediate along the reaction pathway is available.
+Ideally, the mechanism for the rate determining step is established in the literature, however this is not a critical requirement.
+If the mechanism is not established, the method can just as well be used to outline competing mechanisms.
 % *************************************************************************

@@ -1,4 +1,4 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{10}
 \newcommand{\enquote}[1]{#1}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -7,6 +7,13 @@
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
+
+\bibitem[{Buch \emph{et~al.}(2011)Buch, Giorgino and
+  De~Fabritiis}]{buch2011complete}
+Buch, I., Giorgino, T. and De~Fabritiis, G. (2011). \enquote{Complete
+  reconstruction of an enzyme-inhibitor binding process by molecular dynamics
+  simulations,} \emph{Proceedings of the National Academy of Sciences}
+  \textbf{108}, 25, pp. 10184--10189.
 
 \bibitem[{Claeyssens \emph{et~al.}(2006)Claeyssens, Harvey, Manby, Mata,
   Mulholland, Ranaghan, Sch{\"u}tz, Thiel, Thiel and
@@ -54,6 +61,13 @@ Meyer, H.-P., Eichhorn, E., Hanlon, S., L{\"u}tz, S., Sch{\"u}rmann, M.,
   industrial biocatalysis consortium (sibc),} \emph{Catalysis Science \&
   Technology} \textbf{3}, 1, pp. 29--40.
 
+\bibitem[{Rathore \emph{et~al.}(2013)Rathore, Sumakanth, Reddy, Reddanna, Rao,
+  Erion and Reddy}]{rathore2013advances}
+Rathore, R., Sumakanth, M., Reddy, M.~S., Reddanna, P., Rao, A.~A., Erion,
+  M.~D. and Reddy, M. (2013). \enquote{Advances in binding free energies
+  calculations: Qm/mm-based free energy perturbation method for drug design,}
+  \emph{Current pharmaceutical design} \textbf{19}, 26, pp. 4674--4686.
+
 \bibitem[{Svedendahl \emph{et~al.}(2008)Svedendahl, Carlqvist, Branneby,
   Allnér, Frise, Hult, Berglund and Brinck}]{CBIC:CBIC200800318}
 Svedendahl, M., Carlqvist, P., Branneby, C., Allnér, O., Frise, A., Hult, K.,
@@ -61,5 +75,10 @@ Svedendahl, M., Carlqvist, P., Branneby, C., Allnér, O., Frise, A., Hult, K.,
   antarctica lipase b studied by experiment and theory,} \emph{ChemBioChem}
   \textbf{9}, 15, pp. 2443--2451, \doi{10.1002/cbic.200800318},
   \urlprefix\url{http://dx.doi.org/10.1002/cbic.200800318}.
+
+\bibitem[{Zhou and Caflisch(2010)}]{zhou2010high}
+Zhou, T. and Caflisch, A. (2010). \enquote{{High-Throughput Virtual Screening
+  Using Quantum Mechanical Probes: Discovery of Selective Kinase Inhibitors},}
+  \emph{ChemMedChem} \textbf{5}, 7, pp. 1007--1014.
 
 \end{thebibliography}
