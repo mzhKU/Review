@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{14}
 \newcommand{\enquote}[1]{#1}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -7,6 +7,10 @@
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
+
+\bibitem[{Beilen and Li(2002)}]{beilen2002enzyme}
+Beilen, J. and Li, Z. (2002). \enquote{Enzyme technology: an overview,}
+  \emph{Current Opinion in Biotechnology} \textbf{13}, 4, pp. 338--344.
 
 \bibitem[{Buch \emph{et~al.}(2011)Buch, Giorgino and
   De~Fabritiis}]{buch2011complete}
@@ -22,6 +26,14 @@ Claeyssens, F., Harvey, J., Manby, F., Mata, R., Mulholland, A., Ranaghan, K.,
   Sch{\"u}tz, M., Thiel, S., Thiel, W. and Werner, H. (2006).
   \enquote{{High-Accuracy Computation of Reaction Barriers in Enzymes},}
   \emph{Angewandte Chemie} \textbf{118}, 41, pp. 7010--7013.
+
+\bibitem[{Gao \emph{et~al.}(2006)Gao, Cho, Yang, Pan, Yang, Tai and
+  Zhan}]{gao2006computational}
+Gao, D., Cho, H., Yang, W., Pan, Y., Yang, G., Tai, H.-H. and Zhan, C.-G.
+  (2006). \enquote{Computational design of a human butyrylcholinesterase mutant
+  for accelerating cocaine hydrolysis based on the transition-state
+  simulation,} \emph{Angewandte Chemie International Edition} \textbf{45}, 4,
+  pp. 653--657.
 
 \bibitem[{Gotor-Fern{\'a}ndez \emph{et~al.}(2006)Gotor-Fern{\'a}ndez, Busto and
   Gotor}]{gotor2006candida}
@@ -53,6 +65,12 @@ Hediger, M.~R., Steinmann, C., De~Vico, L. and Jensen, J.~H.
   xylanase mutants with greater activity towards a synthetic substrate,}
   \emph{PeerJ} \textbf{1}, p. e111.
 
+\bibitem[{Kirk \emph{et~al.}(2002)Kirk, Borchert and
+  Fuglsang}]{kirk2002industrial}
+Kirk, O., Borchert, T.~V. and Fuglsang, C.~C. (2002). \enquote{Industrial
+  enzyme applications,} \emph{Current opinion in biotechnology} \textbf{13}, 4,
+  pp. 345--351.
+
 \bibitem[{Meyer \emph{et~al.}(2013)Meyer, Eichhorn, Hanlon, L{\"u}tz,
   Sch{\"u}rmann, Wohlgemuth and Coppolecchia}]{meyer2013use}
 Meyer, H.-P., Eichhorn, E., Hanlon, S., L{\"u}tz, S., Sch{\"u}rmann, M.,
@@ -67,6 +85,12 @@ Rathore, R., Sumakanth, M., Reddy, M.~S., Reddanna, P., Rao, A.~A., Erion,
   M.~D. and Reddy, M. (2013). \enquote{Advances in binding free energies
   calculations: Qm/mm-based free energy perturbation method for drug design,}
   \emph{Current pharmaceutical design} \textbf{19}, 26, pp. 4674--4686.
+
+\bibitem[{Schmid \emph{et~al.}(2002)Schmid, Hollmann, Park and
+  B{\"u}hler}]{schmid2002use}
+Schmid, A., Hollmann, F., Park, J.~B. and B{\"u}hler, B. (2002). \enquote{The
+  use of enzymes in the chemical industry in europe,} \emph{Current Opinion in
+  Biotechnology} \textbf{13}, 4, pp. 359--366.
 
 \bibitem[{Svedendahl \emph{et~al.}(2008)Svedendahl, Carlqvist, Branneby,
   Allnér, Frise, Hult, Berglund and Brinck}]{CBIC:CBIC200800318}

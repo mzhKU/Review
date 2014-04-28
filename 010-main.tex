@@ -20,7 +20,7 @@ Company B therefore can save energy required to keep the reaction volume at a ce
 The need for efficient catalysts arises from such an outline and the commercial implications of these considerations are immediate.\footnote{We use the terms \textit{enzme} and \textit{bio-}/\textit{catalyst} interchangeably.}\\
 Increasing the performance of enzymes however is still far from trivial and forms a growing body of research.
 What is clear though is that the development of such catalysts is costly, in terms of manpower, material and energy -- if carried out in the laboratory.
-A number of companies have in fact formed around this demand: Novozymes (DK), Genzyme (US) or DSM (NL) to name but a few\cite{meyer2013use}.\\
+A number of companies have in fact formed around this demand: Novozymes (DK), Genzyme (US) or DSM (NL) to name but a few\cite{meyer2013use, kirk2002industrial, beilen2002enzyme, schmid2002use}.\\
 Laboratory costs can however be saved to a large part if the development is carried out \textit{in silico}.
 The proof that computational results are as reliable as experimental results has been provided not too long ago\cite{claeyssens2006high}.
 The foundation for successful application of computational enzyme engineering has thus been laid out.
@@ -88,6 +88,8 @@ Different methods used should be briefly described to make it easier for the rea
 % *************************************************************************
 % *************************************************************************
 \section{Applications}\label{sec:apps}
+
+\subsection{Method Hediger}
 We have presented recently a number of studies where new functionality has been introduced into an enzyme active site using quantum chemical methods\cite{10.1371/journal.pone.0049849,hediger2013silico,hediger2013computational}.\\
 Rational arguments alone are not sufficient to design new reactivity in an active site.
 Put simply, enzymes do not behave in the way the engineer hopes for.
@@ -97,18 +99,20 @@ Based on the vast mutational space available, initial \textit{in silico} screeni
 Hediger \textit{et al.} therefore chose to use semi-empirical methods for the description of the electronic structure of the enzyme-substrate complex.
 In their approach, the activities of different variants of an enzyme are ordered by comparing the activation energy required for the rate determining step of the overall reaction -- low activation energies correspond to high anticipated activity of the variant.
 
-\subsection{\textit{Candida antarctica} Lipase B Engineering}
+\textbf{{\textit{Candida antarctica} Lipase B Engineering}}\\
 Introducing amidase functionality into the lipase of \textit{Candida antarctica} (CALB).
 
 CALB is used as a versatile catalyst in a variety of applications among which enzymatic kinetic resolution of enantiomeric mixtures is of high pharmaceutical importance\cite{gotor2006candida}.
 While CALB is also known for its reactive promiscuity\cite{CBIC:CBIC200800318}, if the catalyst can be engineered such as to increase its performance for certain of these applications, possible bottle-necks in production could be widened.
 
-
-
-\subsection{\textit{Bacillus circulans} glycoside hydrolase engineering}
+\textbf{\textit{Bacillus circulans} glycoside hydrolase engineering}\\
 As a proof of concept and to show general applicability of the approach outlined for CalB, the glycoside hydrolase of \textit{Bacillus circulans} is engineered to be catalytically active towards an artifical substrate.
 Importantly, we note that the same method as developed for computational screening of CALB activity could be directly transfered to the study of BCX activity.
 The requirements are that a structure representing a bound intermediate along the reaction pathway is available.
 Ideally, the mechanism for the rate determining step is established in the literature, however this is not a critical requirement.
 If the mechanism is not established, the method can just as well be used to outline competing mechanisms.
+
+\subsection{Interesting QM/MM applications}
+\textbf{The cocaine hydrolase guys}\\
+Make a cocaine hydrolase better\cite{gao2006computational}.
 % *************************************************************************
