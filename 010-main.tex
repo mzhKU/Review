@@ -50,6 +50,10 @@ Shifts in pH optima might be predicted more readily\cite{ludwiczek2013strategies
 It is proposed therefore that in cases where no \textit{a priori} knowledge about how an enzyme should be engineered is available, the only reasonable strategy is to carry out systematic screening studies.
 For these to be feasible, either the computer power needs to be very large or the method has to be fast, there is an inherent trade off in this situation.
 Once initial lead structures are identified, higher level methods can be used to narrow down on most promising candidates.
+
+This review is written for a more general audience.
+For specialized details, the reader is referred to the primary literature.
+The intention is to provide an accessible introduction into the field of quantum chemical modeling of enzymatic reactions, highlight advantages of using quantum chemistry and also point out points where special care needs to be taken.
 % *************************************************************************
 
 
@@ -88,6 +92,7 @@ Different methods used should be briefly described to make it easier for the rea
 \begin{itemize}
 \item AM1/RM1/PM3/PM6/PM7/MOZYME
 \item DFT/B3LYP/Dispersion corrections/M06/...
+\item Modeling procedures: Define constraints- how does it affect the calculation (examples in literature?)
 \end{itemize}
 % *************************************************************************
 
@@ -106,7 +111,11 @@ Based on the vast mutational space available, initial \textit{in silico} screeni
 Hediger \textit{et al.} therefore chose to use semi-empirical methods for the description of the electronic structure of the enzyme-substrate complex.
 In their approach, the activities of different variants of an enzyme are ordered by comparing the activation energy required for the rate determining step of the overall reaction -- low activation energies correspond to high anticipated activity of the variant.
 
-\textbf{{\textit{Candida antarctica} Lipase B Engineering}}\\
+In the following, the basic procedure consists of preparing structures for the enzyme substrate complex (``ES'') and the first intermediate (CALB: ``TI''/Tetrahedral intermediate, BCX: ``GE''/Glycosyl enzyme) and calculating the reaction barrier between these two structures, respectively.
+The reaction barrier is calculated by preparing intermediate structures of the model along the reaction coordinate ES$\rightarrow$TI or ES$\rightarrow$GE.
+The quality of the results of the study are strongly dependent on how careful the modeling of these structures is carried out, a major reason for meaningless results is significant structural rearrangement during the geometry optimization.
+
+\subsubsection{{\textit{Candida antarctica} Lipase B Engineering}}
 Introducing amidase functionality into the lipase of \textit{Candida antarctica} (CALB).
 
 CALB is used as a versatile catalyst in a variety of applications among which enzymatic kinetic resolution of enantiomeric mixtures is of high pharmaceutical importance\cite{gotor2006candida}.
@@ -120,21 +129,53 @@ Then it can be used to assess the lower barrier for the accuracy.
 Given all approximations, x out of y mutants are correctly predicted.
 So any method improving on the approximations should provide at least at many correct hits.
 
-\textbf{\textit{Bacillus circulans} glycoside hydrolase engineering}\\
-As a proof of concept and to show general applicability of the approach outlined for CalB, the glycoside hydrolase of \textit{Bacillus circulans} is engineered to be catalytically active towards an artifical substrate.
+\subsubsection{\textit{Bacillus circulans} xylanase engineering}
+As a proof of concept and to show general applicability of the approach outlined for CALB, the xylanase of \textit{Bacillus circulans} is engineered to be catalytically active towards an artifical substrate.
 Importantly, we note that the same method as developed for computational screening of CALB activity could be directly transfered to the study of BCX activity.
 The requirements are that a structure representing a bound intermediate along the reaction pathway is available.
 Ideally, the mechanism for the rate determining step is established in the literature, however this is not a critical requirement.
+In this study, the mechanism was taken from the literature as reported previously\cite{joshi2000hydrogen,joshi2001dissecting}.
 If the mechanism is not established, the method can just as well be used to outline competing mechanisms.\\
-Outline scientific/systematic approach taken in paper.
-Does the result depend on the method?
-Does the result depend on the modeling sequence?
-Does the result depend on the size of the model?
-Systematic preparation of all possible mutants, i.e. the conclusions do not depend on the selection of the mutants taken in paper.
-Does the result depend on the method?
-Does the result depend on the modeling sequence?
-Does the result depend on the size of the model?
-Systematic preparation of all possible mutants, i.e. the conclusions do not depend on the selection of the mutants.
+%Outline scientific/systematic approach taken in paper.
+%Does the result depend on the method?
+%Does the result depend on the modeling sequence?
+%Does the result depend on the size of the model?
+%Systematic preparation of all possible mutants, i.e. the conclusions do not depend on the selection of the mutants taken in paper.
+%Does the result depend on the method?
+%Does the result depend on the modeling sequence?
+%Does the result depend on the size of the model?
+%Systematic preparation of all possible mutants, i.e. the conclusions do not depend on the selection of the mutants.
+The paper follows the following reasoning in order to establish independence of results on modeling procedure and internal consistency within the framework of approximations (both from the quantum chemical model as well as the limited including of physical effects).
+In a first step, the wild-type (WT) reference reaction barrier height is established.
+This is a crucial step because all subsequent conclusions about mutants are depending on how good the WT reaction barrier is estimated.
+As noted above, only the rate determining step is modeled, Fig. \ref{fig:bcx_mechanism}.
+\begin{figure}[htbp] 
+\centering
+\includegraphics[width=1.0\linewidth]{mechanism.pdf}
+\caption{
+Conventional glycosylation step. $x_1$: constrained reaction coordinate; $R$: xylose; 
+$R'$: \textit{ortho}-nitrophenol (ONP).
+%For discussion of proton transfer from E172 to substrate, see text.
+C$_1$ indicating nucleophilic carbon of first xylose unit.
+}
+\label{fig:bcx_mechanism}
+\end{figure}
+As outlined in the methods section, the reaction barrier is mapped out by fixing the reaction coordinate at a fixed interval while optimizing the rest of the protein structure.
+Since the reaction consists of two concerted events (nucleophilic attack by E78 and proton transfer from E172 to ONP), in principle a two-dimensional potential energy surface could be mapped out to determine the reaction barrier.
+However, since proton transfer is associated with a rearrangement of the electronic structure, this reaction coordinate is not constrained and the proton is free to transfer or remain on E172.
+In simple terms, forcing the quantum chemistry to do something it would not if unconstrained would result in an increased reaction barrier and therefore it is advisable to keep the number of constraints as low as possible.\\
+\textbf{Molecular modeling steps}\\
+While considering only a subset of the residues in the active site for the model, as done for CALB, introduces some ambiguity, in this study the full structure of BCX was included in the model.
+The modeling approach should consider the structures available.
+In this case, a PDB structure using a covalent inhibitor is available (1BVV) and this is a good starting point for the modeling procedure because it gives a very clear indication of how the substrate is located in the active site.
+There is also an apoenzyme of BCX available, however placing a substrate into an empty active site requires considerable rearrangement of active site residues.
+Furthermore, ambiguity in how the substrate should be placed in the active site can be reduced using the structure including the inhibitor, which is important in order to increase reproducibility of the research.
+As shown in Fig. 2 of the paper, two possible modeling pathways were worked out.
+In the first one, the ES complex is prepared from the GE structure \textit{before} the GE structure is optimized, in the second (``Interpolation 2''), first the GE structure is optimized and only then is the ES structure prepared.
+The main advantage of the second approach is that a significant amount of computer time can be saved because a large part of the enzyme is already optimized when the ES structure is prepared.two possible modeling pathways were worked out.
+In the first one, the ES complex is prepared from the GE structure \textit{before} the GE structure is optimized, in the second (``Interpolation 2''), first the GE structure is optimized and only then is the ES structure prepared.
+The main advantage of the second approach is that a significant amount of computer time can be saved because a large part of the enzyme is already optimized when the ES structure is prepared.
+
 
 \subsection{Interesting QM/MM applications}
 \textbf{The cocaine hydrolase guys}\\
@@ -143,3 +184,16 @@ Make a cocaine hydrolase better\cite{gao2006computational}.
 \subsection{Requirements for advancement of methods}
 Experimental catalytic data ($k_\text{cat}$) of many mutants to validate against.
 % *************************************************************************
+
+
+% *************************************************************************
+% *************************************************************************
+\section{Conclusions}\label{sec:conclusions}
+
+\subsection{Advantages/Disadvantages of using quantum chemistry for modeling enzymatic reactions}
+\begin{itemize}
+\item Bond formation/breaking can be modeled
+\item Large systems might require constraints to reach convergence
+\item Calculation times depend strongly on model chemistry used
+\item Not yet as established and convenient to use like e.g. docking software
+\end{itemize}

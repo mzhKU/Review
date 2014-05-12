@@ -1,4 +1,4 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{17}
 \newcommand{\enquote}[1]{#1}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -64,6 +64,20 @@ Hediger, M.~R., Steinmann, C., De~Vico, L. and Jensen, J.~H.
   screening of reaction barriers in enzymes: searching for bacillus circulans
   xylanase mutants with greater activity towards a synthetic substrate,}
   \emph{PeerJ} \textbf{1}, p. e111.
+
+\bibitem[{Joshi \emph{et~al.}(2001)Joshi, Sidhu, Nielsen, Brayer, Withers and
+  McIntosh}]{joshi2001dissecting}
+Joshi, M., Sidhu, G., Nielsen, J., Brayer, G., Withers, S. and McIntosh, L.
+  (2001). \enquote{{Dissecting the electrostatic interactions and pH-dependent
+  activity of a family 11 glycosidase},} \emph{Biochemistry} \textbf{40}, 34,
+  pp. 10115--10139.
+
+\bibitem[{Joshi \emph{et~al.}(2000)Joshi, Sidhu, Pot, Brayer, Withers and
+  McIntosh}]{joshi2000hydrogen}
+Joshi, M., Sidhu, G., Pot, I., Brayer, G., Withers, S. and McIntosh, L. (2000).
+  \enquote{Hydrogen bonding and catalysis: a novel explanation for how a single
+  amino acid substitution can change the ph optimum of a glycosidase1,}
+  \emph{Journal of molecular biology} \textbf{299}, 1, pp. 255--279.
 
 \bibitem[{Kirk \emph{et~al.}(2002)Kirk, Borchert and
   Fuglsang}]{kirk2002industrial}
