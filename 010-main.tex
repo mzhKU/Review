@@ -93,6 +93,7 @@ Different methods used should be briefly described to make it easier for the rea
 \item AM1/RM1/PM3/PM6/PM7/MOZYME
 \item DFT/B3LYP/Dispersion corrections/M06/...
 \item Modeling procedures: Define constraints- how does it affect the calculation (examples in literature?)
+\item Parameters of PM6: gradient convergence and NDDO cutoff
 \end{itemize}
 % *************************************************************************
 
@@ -130,6 +131,7 @@ Given all approximations, x out of y mutants are correctly predicted.
 So any method improving on the approximations should provide at least at many correct hits.
 
 \subsubsection{\textit{Bacillus circulans} xylanase engineering}
+\textbf{Introduction.}
 As a proof of concept and to show general applicability of the approach outlined for CALB, the xylanase of \textit{Bacillus circulans} is engineered to be catalytically active towards an artifical substrate.
 Importantly, we note that the same method as developed for computational screening of CALB activity could be directly transfered to the study of BCX activity.
 The requirements are that a structure representing a bound intermediate along the reaction pathway is available.
@@ -164,7 +166,7 @@ As outlined in the methods section, the reaction barrier is mapped out by fixing
 Since the reaction consists of two concerted events (nucleophilic attack by E78 and proton transfer from E172 to ONP), in principle a two-dimensional potential energy surface could be mapped out to determine the reaction barrier.
 However, since proton transfer is associated with a rearrangement of the electronic structure, this reaction coordinate is not constrained and the proton is free to transfer or remain on E172.
 In simple terms, forcing the quantum chemistry to do something it would not if unconstrained would result in an increased reaction barrier and therefore it is advisable to keep the number of constraints as low as possible.\\
-\textbf{Molecular modeling steps}\\
+\textbf{Molecular modeling procedure and calculation parameters.}
 While considering only a subset of the residues in the active site for the model, as done for CALB, introduces some ambiguity, in this study the full structure of BCX was included in the model.
 The modeling approach should consider the structures available.
 In this case, a PDB structure using a covalent inhibitor is available (1BVV) and this is a good starting point for the modeling procedure because it gives a very clear indication of how the substrate is located in the active site.
@@ -175,6 +177,25 @@ In the first one, the ES complex is prepared from the GE structure \textit{befor
 The main advantage of the second approach is that a significant amount of computer time can be saved because a large part of the enzyme is already optimized when the ES structure is prepared.two possible modeling pathways were worked out.
 In the first one, the ES complex is prepared from the GE structure \textit{before} the GE structure is optimized, in the second (``Interpolation 2''), first the GE structure is optimized and only then is the ES structure prepared.
 The main advantage of the second approach is that a significant amount of computer time can be saved because a large part of the enzyme is already optimized when the ES structure is prepared.
+The time required for optimizing the structures by these two approaches are found to differ by a factor of six.
+A similar approach reveals that the greatest calculation efficiency is reached when the structures of the mutated enzymes are prepared from WT structures with an already optimized backbone scaffold.\\
+Assessment of parameter depencendy of optimized structure energies reveals that within the given framework of approximations, conclusive results are obtained when the gradient convergence criterion is set to 1 kcal/(mol\AA) and an NDDO cutoff of 15 \AA \mbox{ i}s used.
+From such an approach, the reaction barrier is found to be 18.5 kcal/mol which is very close to the experimentally reported value of 17.0 kcal/mol obtained from transition state theory\cite{joshi2000hydrogen}.
+In the below figure, the different layers of constraints are illustrated.
+\begin{figure}[htbp] 
+\centering
+\includegraphics[width=1.0\linewidth]{bcx-constraint-layers-ray-occlusion.png}
+\caption{
+Color coded residue layers have at least one atom within the respective distance to any atom of the substrate:
+\textit{green} 8 \AA, \textit{red} 10 \AA, \textit{purple} 12 \AA, \textit{cyan} 14 \AA.
+\textit{Brown} residues are always constrained (they are optimized in the WT model), \textit{blue} are mutated residues.
+The substrate is visible as a ball-stick model in the center of the figure.
+}
+\label{fig:bcx_constr_constraint_layers}
+\end{figure}
+The calculated barrier depends on the number of constraints in the model (note, this does not correspond to the constraint used in defining the reaction coordinate).
+However, it is assumed that the same reduction in reaction barrier carries over to the models of the mutants and therefore cancels out as a source of error.
+
 
 
 \subsection{Interesting QM/MM applications}
