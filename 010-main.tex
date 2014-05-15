@@ -1,6 +1,6 @@
 % *************************************************************************
-\chapter[Working title: Calculations]
-{Working title: Calculations\label{ch1}}
+\chapter[Working title: Quantum Chemistry Based Enzyme Activity Engineering]
+{Working title: Quantum Chemistry Based Enzyme Activity Engineering\label{ch1}}
 \chapauth{Martin R. Hediger$^{a}$, Harm Otten$^{b}$
 \chapaff{$^{a}$Z\"urich\\
 $^{b}$K{\o}benhavn\\
@@ -33,6 +33,21 @@ By giving an overview and some details in this article, we hope to also, at leas
 
 % *************************************************************************
 % *************************************************************************
+\section{Motivation}\label{sec:mot}
+Main messages:
+\begin{itemize}
+\item Screening 317 single and 111 double mutants with av. 29 h per barrier and 1 CPU per interpolation point
+\item Correct mechanisms using PM6
+\item Barriers in agreement (calc. 18.5, exp. 17.0 kcal/mol)
+\item 15/22 correctly predicted (using many approximations and not full model)
+\item No bias, more active double mutants identified
+\item largely automated
+\item For CALB lowest barriers close to WT, BCX lowest barriers lower than WT
+\end{itemize}
+% *************************************************************************
+
+
+% *************************************************************************
 \section{Introduction}\label{sec:intro}
 We provide an introduction into the topic of enzyme catalysis modeling for interested people from inside and outside of the field.\\
 We outline the latest achievements, methods in use and outline required developments to establish computational enzyme engineering not only in the literature, but also in (commercial) practice.\\
@@ -54,6 +69,13 @@ Once initial lead structures are identified, higher level methods can be used to
 This review is written for a more general audience.
 For specialized details, the reader is referred to the primary literature.
 The intention is to provide an accessible introduction into the field of quantum chemical modeling of enzymatic reactions, highlight advantages of using quantum chemistry and also point out points where special care needs to be taken.
+
+Aims of quantum chemical screening assay
+\begin{itemize}
+\item Fast
+\item easy to setup
+\item qualitative accuracy
+\end{itemize}
 % *************************************************************************
 
 
@@ -93,6 +115,7 @@ Different methods used should be briefly described to make it easier for the rea
 \item AM1/RM1/PM3/PM6/PM7/MOZYME
 \item DFT/B3LYP/Dispersion corrections/M06/...
 \item Modeling procedures: Define constraints- how does it affect the calculation (examples in literature?)
+\item Explain available software: GAMESS, MOPAC
 \item Explain parameters of PM6: MOZYME, gradient convergence and NDDO cutoff
 \end{itemize}
 % *************************************************************************
@@ -114,9 +137,11 @@ In their approach, the activities of different variants of an enzyme are ordered
 Implicitly this assumes high substrate concentration such that $k_\text{cat}$ becomes rate limiting, a reasonable assumption under industrial conditions.
 
 \textbf{General outline of method.}
-In both studies, the basic procedure consists of preparing structures for the enzyme substrate complex (``ES'') and the first intermediate (CALB: ``TI''\footnote{Tetrahedral intermediate}, BCX: ``GE''\footnote{Glycosyl enzyme}) and calculating the reaction barrier between these two pairs of structures, respectively.
-The reaction barrier is calculated by preparing intermediate structures of the model along the reaction coordinate ES$_\text{CALB}\rightarrow$TI or ES$_\text{BCX}\rightarrow$GE (around 10 intermediate structures, Fig. \ref{fig:calb_reaction}).
-The quality of the results of this approach are strongly dependent on how careful the modeling of each of these structures is carried out, a major reason for meaningless results is significant structural rearrangement during the geometry optimization.
+In both studies, the basic procedure consists of preparing structures for the enzyme substrate complex (``ES'') and the first intermediate (CALB: ``TI''\footnote{Tetrahedral intermediate}, BCX: ``GE''\footnote{\label{foot:ge}Glycosyl enzyme}) and calculating the reaction barrier between these two pairs of structures, respectively.
+The reaction barrier is calculated by interpolating between the ES$_\text{CALB}$ and TI or ES$_\text{BCX}$ GE structures, \textit{i.e.} by preparing a set of 10 intermediate structures which approximate the structure of the system along the reaction coordinate.\footnote{In the literature, the terms \textit{interpolation}, \textit{linear transit scan}, \textit{reaction coordinate calculation} or \textit{adiabatic mapping} are frequently used to indicate the same kind of procedure}.
+By evaluating the energies for each interpolation frame for the two reactions ES$_\text{CALB}\rightarrow$TI or ES$_\text{BCX}\rightarrow$GE, it becomes possible to obtain an approximate potential energy surface of the reaction, Fig. \ref{fig:calb_reaction}.
+The quality of the results of this approach are strongly dependent on how careful the modeling of each of these structures is carried out.
+A frequent reason for meaningless results is significant structural rearrangement during the geometry optimization, requiring to interpolate between very different conformations of the two stationary points on each side of the reaction barrier.
 
 \textbf{Requirements.}
 The most basic requirements are that a structure representing a bound intermediate along the reaction pathway is available.
@@ -174,7 +199,7 @@ A number of weak points remain:
 }
 % -----------------------------------------------------------------
 
-
+\newpage
 \subsubsection{\textit{Bacillus circulans} xylanase engineering}
 %Outline scientific/systematic approach taken in paper.
 %Does the result depend on the method?
@@ -185,74 +210,107 @@ A number of weak points remain:
 %Does the result depend on the modeling sequence?
 %Does the result depend on the size of the model?
 %Systematic preparation of all possible mutants, i.e. the conclusions do not depend on the selection of the mutants.
-\textbf{Introduction.}
+%
+%
+%Internal logic:
+% - Mapping of the reaction using only one constraint
+% - How should the substrate be placed in the active site?
+%   -> Use covalently inhibited structure as starting point for GE
+%      to avoid ambiguity
+% - How should the ES structure be prepared?
+%   -> Check if it depends on using non-optimized or optimized GE structure
+%   -> Using optimized GE structure as template for ES is better because
+%      of higher structural similarity and reduced computer time requirement
+%   -> These considerations are relevant irrespective of QM method
+% - Effect of applying constraints on remote part of enzyme: how does
+%   the reaction barrier depend on the layer of optimized residues?
+% - How should the calculation be configured?
 In order to address the weak points summarized above and to show general applicability of the approach outlined for CALB, the xylanase of \textit{Bacillus circulans} (BCX) is engineered to be catalytically active towards an artifical substrate ($ortho$-nitrophenol-$\beta$-xylobioside), Fig. \ref{fig:substrate}.
 \begin{figure}[htbp] 
 \centering
 \includegraphics[width=0.85\linewidth]{substrate.pdf}
 \caption{
-Substrate used in BCX study.
+$ortho$-nitrophenol-$\beta$-xylobioside substrate used in BCX study consisting of two xylose units and ONP.
 }
 \label{fig:substrate}
 \end{figure}
-In this study, the mechanism was taken from the literature as reported previously\cite{joshi2000hydrogen,joshi2001dissecting}.\\
-The paper follows the following reasoning in order to establish independence of results on modeling procedure and internal consistency within the framework of approximations (both from the quantum chemical model as well as the limited including of physical effects).
-In a first step, the wild-type (WT) reference reaction barrier height is established.
+In this study, the mechanism was taken from the literature as reported previously\cite{joshi2000hydrogen,joshi2001dissecting}.
+In the following, we outline the work reported in the study and illustrate the sequence of steps to arrive at internally consistent conclusions.\\
+\textbf{WT reaction barrier modeling.}
+In a first step, the wild-type (WT) reference reaction barrier is established.
 This is a crucial step because all subsequent conclusions about mutants are depending on how good the WT reaction barrier is estimated.
-Again only the rate determining step is modeled, Fig. \ref{fig:bcx_mechanism}.
+As was done for CALB, only the rate determining step is modeled, Fig. \ref{fig:bcx_mechanism}.
 \begin{figure}[htbp] 
 \centering
 \includegraphics[width=1.0\linewidth]{mechanism.pdf}
 \caption{
-Conventional glycosylation step. $x_1$: constrained reaction coordinate; $R$: xylose; 
+Rate determining step in conventional glycosylation. $x_1$: constrained reaction coordinate; $R$: xylose; 
 $R'$: \textit{ortho}-nitrophenol (ONP).
 C$_1$ indicating nucleophilic carbon of first xylose unit\cite{hediger2013computational}.
 }
 \label{fig:bcx_mechanism}
 \end{figure}
-As outlined in the methods section, the reaction barrier is mapped out by fixing the reaction coordinate at a fixed interval while optimizing the rest of the protein structure.
+As outlined in the methods section, the reaction barrier is mapped out by fixing the reaction coordinate ($x_1$ in Fig. \ref{fig:bcx_mechanism}) at discrete, decrementing values while optimizing the rest of the protein structure.
 Since the reaction consists of two concerted events (nucleophilic attack by E78 and proton transfer from E172 to ONP), in principle a two-dimensional potential energy surface could be mapped out to determine the reaction barrier.
-However, since proton transfer is associated with a rearrangement of the electronic structure, this reaction coordinate is not constrained and the proton is free to transfer or remain on E172.
-In simple terms, forcing the quantum chemical model to do something it would not if unconstrained, would result in an increased reaction barrier and therefore it is advisable to keep the number of constraints as low as possible.\\
-\textbf{Molecular modeling procedure and calculation parameters.}
-In a second step, the modeling procedure is worked out.
-A PDB structure using a covalent inhibitor is available (1BVV) and is used as a starting point for the modeling procedure because it gives a very clear indication of how the substrate is located in the active site.
-There is also an apoenzyme of BCX available, however placing a substrate into an empty active site requires considerable rearrangement of active site residues.
-Furthermore, ambiguity in how the substrate should be placed in the active site can be reduced using the structure including the inhibitor, which is also increases reproducibility of the results.
-As shown in Fig. 2 of the paper, two possible modeling pathways were worked out.
-In the first one, the ES complex is prepared from the GE structure \textit{before} the GE structure is optimized, in the second (``Interpolation 2''), first the GE structure is optimized and only then is the ES structure prepared.
-The main advantage of the second approach is that a significant amount of computer time can be saved because a large part of the enzyme is already optimized when the ES structure is prepared.
-The time required for optimizing the structures by these two approaches are found to differ by a factor of six.
-A similar approach reveals that the greatest calculation efficiency is reached when the structures of the mutated enzymes are prepared from WT structures with an already optimized backbone scaffold.\\
-In the next step, an assessment of parameter depencendy of optimized structure energies reveals that within the given framework of approximations, conclusive results are obtained when the gradient convergence criterion is set to 1 kcal/(mol\AA) and an NDDO cutoff of 15 \AA \mbox{ i}s used.
-From such an approach, the reaction barrier is found to be 18.5 kcal/mol which is very close to the experimentally reported value of 17.0 kcal/mol obtained from transition state theory\cite{joshi2000hydrogen}.\\
-Then, it is evaluated how the results depend on the size of the model included in the optimization calculations.
-In the below figure, the different layers of constraints are illustrated.
+However, since proton transfer is associated with a rearrangement of the electronic structure, this reaction coordinate is left unconstrained and is handled solely by the quantum chemical method, \textit{i.e.} the proton is free to transfer from or remain on E172.
+Forcing the quantum chemical model to do something it would not if left unconstrained most likely results in an increased reaction barrier and therefore it is advisable to keep the number of constraints as low as possible.\\
+A PDB structure comprising a covalently linked inhibitor is available (1BVV) and is used as a starting point for the modeling procedure because it gives a very clear indication of how the substrate is located in the active site.
+As shown in Fig. 2 in Hediger \textit{et al.} (2013b), two possible modeling pathways were worked out.
+In the first one, the ES complex is prepared from the GE structure \textit{before} the GE structure is optimized (see footnote \ref{foot:ge}).
+Alternatively, the GE structure is optimized first and then used as a template for the ES structure.
+Within this alternative approach, the preparation of the ES structure then just requires minor modifications of substrate conformation before the structure is optimized.\\
+Because in this second approach the ES structure very closely resembles the optimized GE structure, it is possible to concentrate the optimization of the ES structure only on the active site, while the remote part of the enzyme remains fixed at the optimized geometry of the GE structure.
+This results in very large gains in computational efficiency, which depend on the layer of residues being optimized around the active site.\footnote{The structural constraints are parameters to the calculation program and are prepared programmatically using a PYMOL script. The way the parameters are submitted to the calculation may vary depending on the software.}
+Fixing, \textit{i.e.} not reoptimizing an already optimized part of the enzyme however also results in slightly increased energy of the ES structure relative to the fully optimized GE structure and so the reaction barriers will be decreased.
+This increase results from multiple minor structural strain which propagates from the active site to the fixed part of the enzyme.
+The observations are summarized in Fig. \ref{fig:bcx_constr_constraint_layers}.
+% Panel labels have their own minipages to print on same line
 \begin{figure}[htbp] 
 \centering
 \begin{minipage}{0.42\linewidth}
 \textbf{A}
+\end{minipage}
+\begin{minipage}{0.42\linewidth}
+\textbf{B}
+\end{minipage}
+\begin{minipage}{0.47\linewidth}
 \includegraphics[width=0.95\linewidth]{bcx-constraint-layers-ray-occlusion-2.png}
 \end{minipage}
-\begin{minipage}{0.56\linewidth}
-\textbf{B}
+\begin{minipage}{0.51\linewidth}
 \includegraphics[width=1.00\linewidth]{bcx-barriers-constraint-layers.pdf}
 \end{minipage}
 \caption{
-\textbf{A}: Illustration of BCX with bound ONP substrate.
-Color coded residue layers have at least one atom within the respective distance to any atom of the substrate:
+\textbf{A}: Illustration of optimization layers of BCX with bound ONP substrate.
+Color coded residue layers have at least one atom within the indicated distance to any atom of the substrate:
 \textit{green} 8 \AA, \textit{red} 10 \AA, \textit{purple} 12 \AA, \textit{cyan} 14 \AA.
-\textit{Brown} residues are always constrained (they are optimized in the WT model), \textit{blue} are mutated residues.
-The substrate is visible in the center of the figure.
-\textbf{B}: Calculated reaction barriers for different layers of optimized residues.\cite{hediger2013computational}
+\textit{Brown} residues remain at their optimized GE geometry, \textit{dark blue} are residues which are screened for active mutations.
+The substrate is visible in the center of the dark blue residues.
+\textbf{B}: Calculated reaction barriers for different layers of optimized residues (based on \cite{hediger2013computational}).
 }
 \label{fig:bcx_constr_constraint_layers}
 \end{figure}
-The calculated barrier depends on the number of constraints in the model (note, this does not correspond to the constraint used in defining the reaction coordinate).
-However, it is assumed that the same reduction in reaction barrier carries over to the models of the mutants and therefore cancels out as a source of error.\\
-These experiments allowed to clearly justify the selected quantum chemical model (PM6) and its parametric configuration, the sequence of modeling steps in order to carry out the calculations and the layer thickness of optimized residues around the active site.\\
-In the final step, using PYMOL\cite{PyMOLu}, systematically all possible single mutants within a given distance of the substrate are prepared\footnote{The PYMOL script used for the preparation of the mutants is available at https://github.com/mzhKU/Enzyme-Screening/blob/master/vsc-bcx.py.}.
-Analysis of reaction barriers reveals that, after combining the best single mutants from all mutated positions, the set of double mutants on average has lower activation barriers than the set of single mutants.
+Based on this second approach, \textit{i.e.} using the optimized GE structure as the template for the ES structure, and when not applying any constraints (apart from the reaction coordinate $x_1$), the reaction barrier is found to be 18.5 kcal/mol which is in very close agreement to the experimentally reported value of 17.0 kcal/mol obtained from transition state theory\cite{joshi2000hydrogen}.
+This strongly supports that the outlined modeling procedure, the configuration of the quantum chemical method and the included/omitted physical effects provide a meaningful model of the enzyme kinetics.
+As pointed out above, when applying constraints on remote parts of the structure, this can decrease the reaction barrier because the ES structure is increased in energy relative to the GE reference point (which is set to zero).
+However, it is reasonable to assume that this relative increase will be the same for all studied structures and so cancels out once mutants are compared relative to each other.  
+Overall, application of constraints to remote parts of the enzyme is necessary to reach the desired calculation efficiency of one reaction barrier per day when running each interpolation step in parallel.
+Furthermore, application of constraints has been widely adopted by the community\cite{himo2006quantum,siegbahn2009recent,liao2012comparison,lonsdale2013quantum}.
+Alternatively, the constraints can be expressed in terms of very large harmonic force constants keeping the atoms in place.
+The time required for optimizing the structures with or without constraints are found to differ by a factor of six (Fig. 4B in Hediger \textit{et al.} (2013b)).
+It is noted that a careful assessment of the modeling strategy is required and relevant irrespective of what kind of quantum chemical method is used to carry out the calculations and can provide critical insight into subsequent improvement efforts.\\
+%\textbf{Calculation parameters.}
+%By analysing stationary point convergence with respect to various gradient convergence requirements, it is found that a reasonable criterion for a stationary structure is to require the total gradient to be below 1 kcal/(mol\AA).\\
+\textbf{Mutant activity screening.}
+By a similar approach as the one outline for the modeling of the WT reaction, it is found that different ways of modeling the set of mutants results in significantly different levels of efficiency, both in terms of required manual efforts as well as in computational time requirements.
+We refer to the original publication for details\cite{hediger2013computational} but point out that when, similarly as for the WT, the ES structures of the mutants are based on templates of optimized mutant GE structures, again large gains in computational efficiency are possible (see Fig. 7 in Hediger \textit{et al.} (2013b)).\\
+Using PYMOL\cite{PyMOLu}, models of all possible single mutants within a given distance of the substrate are prepared (excluding the catalytically active E78 and E172).\footnote{The PYMOL script used for the preparation of the mutants is available at https://github.com/mzhKU/Enzyme-Screening/blob/master/vsc-bcx.py.}
+It is noted that in the current implementation of the presented approach, all mutated side chains are in their default ionization state at physiological pH.
+Furthermore, in a number of cases it is not possible to introduce a large side chain in a spatially restricted environment, such cases are discarded.
+Lastly, instead of using a side chain rotamer library, each mutated side chain is locally optimized (using an empirical builtin PYMOL function) in the environment of the enzyme before being submitted to the quantum calculation.
+This approach allowed to screen a set of 317 single mutants, where on average 29 hours are required to complete the calculations of a full reaction barrier using one CPU for each interpolation point.\footnote{All obtained barriers are provided at http://www.scribd.com/doc/133445214/Supp-Mat-Paper-4.}
+From this set of single mutants, at each position $i$ in the active site the mutation giving the mutant with the lowest barrier $X_i$ is identified.
+Then, from this set of single mutants $\{X_i\}$, all possible double mutants $X_i-X_j$ are formed.
+Analysis of the reaction barriers of the obtained candidates reveals that the set of double mutants on average has lower activation barriers than the set of single mutants.
 Furthermore, the lowest barriers are found among the double mutants.
 \begin{figure}[htbp] 
 \centering
@@ -262,8 +320,30 @@ Barrier distribution of single and double BCX mutants\cite{hediger2013computatio
 }
 \label{fig:bcx_barrier_distribution}
 \end{figure}
+\newline
+\textbf{Rationalization of mutants.}
+Analysis of the set of mutants indicates that position 127 has strong influence on the activity (9 of 20 single mutants carry a mutation at that position).
+Inspection of the structural arrangement of the Q127W, W9D/E and N35E mutations points to a number of possible explanations of the observed lower barriers, Fig. \ref{fig:bcx_rationalization}.
+\begin{figure}[htbp] 
+\centering
+\includegraphics[width=0.99\linewidth]{analyse-charge.png}
+\caption{
+Rationalization of reaction barriers.
+\textbf{A} Overlay of WT (black carbon spheres) and Q127W side-chain (green).
+\textbf{B} Stabilizing, coulombic interactions between negative W9D/E or N35E (red) with the nucleophilic, partially positively charged C$_1$ of the substrate.
+Distances in \AA\cite{hediger2013computational}.
+}
+\label{fig:bcx_rationalization}
+\end{figure}
+As discussed above, the mechanism is postulated to involve a catalytically active, negatively charged E78 residue as the nucleophile.
+If Q127 stabilizes the negative charge by hydrogen bonding, the nucleophilic character of E78 is reduced.
+Removing the possibility to act as a hydrogen bond donor (as in Q127W) but keeping overall structural integrity with a side chain of similar size could result in increased nucleophilicity of E78, Fig. \ref{fig:bcx_rationalization} A.
+Furthermore, as illustrated in Fig. \ref{fig:bcx_mechanism}, the transition state involves a partially positive charge on C$_1$ of the substrate.
+Negative charges on side chains (such as in W9D/E) could act as stabilizers of this negative charge and increase catalytic activity in doing so.
+Rationalization of N35 mutations should take into account a recently proposed \textit{reverse protonation} mechanism\cite{joshi2000hydrogen}.
+Again, when ionized, N35E could act in stabilizing C$_1$ but when in neutral protonation state, it could be acting as a hydrogen bond donor to the catalytically active E172.
 
-
+\newpage
 \subsection{Interesting QM/MM applications}
 \textbf{The cocaine hydrolase guys}\\
 Make a cocaine hydrolase better\cite{gao2006computational}.

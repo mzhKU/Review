@@ -1,4 +1,4 @@
-\begin{thebibliography}{18}
+\begin{thebibliography}{22}
 \newcommand{\enquote}[1]{#1}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -65,6 +65,12 @@ Hediger, M.~R., Steinmann, C., De~Vico, L. and Jensen, J.~H.
   xylanase mutants with greater activity towards a synthetic substrate,}
   \emph{PeerJ} \textbf{1}, p. e111.
 
+\bibitem[{Himo(2006)}]{himo2006quantum}
+Himo, F. (2006). \enquote{Quantum chemical modeling of enzyme active sites and
+  reaction mechanisms,} \emph{Theoretical Chemistry Accounts: Theory,
+  Computation, and Modeling (Theoretica Chimica Acta)} \textbf{116}, 1, pp.
+  232--240.
+
 \bibitem[{Joshi \emph{et~al.}(2001)Joshi, Sidhu, Nielsen, Brayer, Withers and
   McIntosh}]{joshi2001dissecting}
 Joshi, M., Sidhu, G., Nielsen, J., Brayer, G., Withers, S. and McIntosh, L.
@@ -84,6 +90,20 @@ Joshi, M., Sidhu, G., Pot, I., Brayer, G., Withers, S. and McIntosh, L. (2000).
 Kirk, O., Borchert, T.~V. and Fuglsang, C.~C. (2002). \enquote{Industrial
   enzyme applications,} \emph{Current opinion in biotechnology} \textbf{13}, 4,
   pp. 345--351.
+
+\bibitem[{Liao and Thiel(2012)}]{liao2012comparison}
+Liao, R.-Z. and Thiel, W. (2012). \enquote{Comparison of qm-only and qm/mm
+  models for the mechanism of tungsten-dependent acetylene hydratase,}
+  \emph{Journal of Chemical Theory and Computation} \textbf{8}, 10, pp.
+  3793--3803.
+
+\bibitem[{Lonsdale \emph{et~al.}(2013)Lonsdale, Houghton, Zurek, Bathelt,
+  Foloppe, de~Groot, Harvey and Mulholland}]{lonsdale2013quantum}
+Lonsdale, R., Houghton, K.~T., Zurek, J., Bathelt, C.~M., Foloppe, N.,
+  de~Groot, M.~J., Harvey, J.~N. and Mulholland, A.~J. (2013). \enquote{Quantum
+  mechanics/molecular mechanics modeling of regioselectivity of drug metabolism
+  in cytochrome p450 2c9,} \emph{Journal of the American Chemical Society}
+  \textbf{135}, 21, pp. 8001--8015.
 
 \bibitem[{Ludwiczek \emph{et~al.}(2013)Ludwiczek, D’Angelo, Yalloway,
   Brockerman, Okon, Nielsen, Strynadka, Withers and
@@ -114,6 +134,14 @@ Schmid, A., Hollmann, F., Park, J.~B. and B{\"u}hler, B. (2002). \enquote{The
   use of enzymes in the chemical industry in europe,} \emph{Current Opinion in
   Biotechnology} \textbf{13}, 4, pp. 359--366.
 
+\bibitem[{{Schr\"odinger, LLC}(2010)}]{PyMOLu}
+{Schr\"odinger, LLC} (2010).
+
+\bibitem[{Siegbahn and Himo(2009)}]{siegbahn2009recent}
+Siegbahn, P.~E. and Himo, F. (2009). \enquote{Recent developments of the
+  quantum chemical cluster approach for modeling enzyme reactions,} \emph{JBIC
+  Journal of Biological Inorganic Chemistry} \textbf{14}, 5, pp. 643--651.
+
 \bibitem[{Svedendahl \emph{et~al.}(2008)Svedendahl, Carlqvist, Branneby,
   Allnér, Frise, Hult, Berglund and Brinck}]{CBIC:CBIC200800318}
 Svedendahl, M., Carlqvist, P., Branneby, C., Allnér, O., Frise, A., Hult, K.,
@@ -121,10 +149,6 @@ Svedendahl, M., Carlqvist, P., Branneby, C., Allnér, O., Frise, A., Hult, K.,
   antarctica lipase b studied by experiment and theory,} \emph{ChemBioChem}
   \textbf{9}, 15, pp. 2443--2451, \doi{10.1002/cbic.200800318},
   \urlprefix\url{http://dx.doi.org/10.1002/cbic.200800318}.
-
-\bibitem[{{The PyMOL Molecular Graphics System, Schr\"odinger,
-  LLC}(2010)}]{PyMOLu}
-{The PyMOL Molecular Graphics System, Schr\"odinger, LLC} (2010).
 
 \bibitem[{Zhou and Caflisch(2010)}]{zhou2010high}
 Zhou, T. and Caflisch, A. (2010). \enquote{{High-Throughput Virtual Screening
