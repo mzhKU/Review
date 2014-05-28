@@ -151,8 +151,12 @@ In case no generally accepted mechanism is reported, a preceeding study could an
 
 % *****************************************************************
 % Upcoming
-\textcolor{blue}{
 \subsubsection{{\textit{Candida antarctica} Lipase B (CALB) Engineering}}
+In the studies related to CALB, we answer the question if quantum chemical methods can be used for enzyme activity screening, develop an efficient modeling protocol and verify the calculated predictions with experimental results.
+The model system used in this study was CALB and the reaction studied is the hydrolysis of $N$-benzyl-2-chloroacetamide.
+
+
+\textcolor{blue}{
 UPCOMING\\
 The questions answered in this study are:
 \begin{itemize}
@@ -197,35 +201,13 @@ A number of weak points remain:
 \item Different ionization states of residues
 \end{itemize}
 }
+
+Real world applications of BCX: production of biofuels and papers, CALB: pharmaceutical and fine chemicals[REFS?].
 % -----------------------------------------------------------------
 
 \newpage
 \subsubsection{\textit{Bacillus circulans} xylanase engineering}
-%Outline scientific/systematic approach taken in paper.
-%Does the result depend on the method?
-%Does the result depend on the modeling sequence?
-%Does the result depend on the size of the model?
-%Systematic preparation of all possible mutants, i.e. the conclusions do not depend on the selection of the mutants taken in paper.
-%Does the result depend on the method?
-%Does the result depend on the modeling sequence?
-%Does the result depend on the size of the model?
-%Systematic preparation of all possible mutants, i.e. the conclusions do not depend on the selection of the mutants.
-%
-%
-%Internal logic:
-% - Mapping of the reaction using only one constraint
-% - How should the substrate be placed in the active site?
-%   -> Use covalently inhibited structure as starting point for GE
-%      to avoid ambiguity
-% - How should the ES structure be prepared?
-%   -> Check if it depends on using non-optimized or optimized GE structure
-%   -> Using optimized GE structure as template for ES is better because
-%      of higher structural similarity and reduced computer time requirement
-%   -> These considerations are relevant irrespective of QM method
-% - Effect of applying constraints on remote part of enzyme: how does
-%   the reaction barrier depend on the layer of optimized residues?
-% - How should the calculation be configured?
-In order to address the weak points summarized above and to show general applicability of the approach outlined for CALB, the xylanase of \textit{Bacillus circulans} (BCX) is engineered to be catalytically active towards an artifical substrate ($ortho$-nitrophenol-$\beta$-xylobioside), Fig. \ref{fig:substrate}.
+In order to address the points summarized above and to show general applicability of the approach outlined for CALB, the xylanase of \textit{Bacillus circulans} (BCX) is engineered to be catalytically active towards an artifical substrate ($ortho$-nitrophenol-$\beta$-xylobioside), Fig. \ref{fig:substrate}.
 \begin{figure}[htbp] 
 \centering
 \includegraphics[width=0.85\linewidth]{substrate.pdf}
@@ -235,7 +217,7 @@ $ortho$-nitrophenol-$\beta$-xylobioside substrate used in BCX study consisting o
 \label{fig:substrate}
 \end{figure}
 In this study, the mechanism was taken from the literature as reported previously\cite{joshi2000hydrogen,joshi2001dissecting}.
-In the following, we outline the work reported in the study and illustrate the sequence of steps to arrive at internally consistent conclusions.\\
+In the following, we outline the work reported in the study and illustrate the sequence of simulation and modeling steps.\\
 \textbf{WT reaction barrier modeling.}
 In a first step, the wild-type (WT) reference reaction barrier is established.
 This is a crucial step because all subsequent conclusions about mutants are depending on how good the WT reaction barrier is estimated.
@@ -260,9 +242,9 @@ In the first one, the ES complex is prepared from the GE structure \textit{befor
 Alternatively, the GE structure is optimized first and then used as a template for the ES structure.
 Within this alternative approach, the preparation of the ES structure then just requires minor modifications of substrate conformation before the structure is optimized.\\
 Because in this second approach the ES structure very closely resembles the optimized GE structure, it is possible to concentrate the optimization of the ES structure only on the active site, while the remote part of the enzyme remains fixed at the optimized geometry of the GE structure.
-This results in very large gains in computational efficiency, which depend on the layer of residues being optimized around the active site.\footnote{The structural constraints are parameters to the calculation program and are prepared programmatically using a PYMOL script. The way the parameters are submitted to the calculation may vary depending on the software.}
+This results in very large gains in computational efficiency, which depend on the layer of residues being optimized around the active site.\footnote{The structural constraints are parameters to the calculation program and are prepared programmatically using a PYMOL script. The way the parameters are submitted to the calculation may vary depending on the software used for calculations.}
 Fixing, \textit{i.e.} not reoptimizing an already optimized part of the enzyme however also results in slightly increased energy of the ES structure relative to the fully optimized GE structure and so the reaction barriers will be decreased.
-This increase results from multiple minor structural strain which propagates from the active site to the fixed part of the enzyme.
+This increase (of ES energy relative to GE) results from multiple minor structural strain forming at the interface between the fixed and optimized layers of the structure.
 The observations are summarized in Fig. \ref{fig:bcx_constr_constraint_layers}.
 % Panel labels have their own minipages to print on same line
 \begin{figure}[htbp] 
@@ -285,7 +267,7 @@ Color coded residue layers have at least one atom within the indicated distance 
 \textit{green} 8 \AA, \textit{red} 10 \AA, \textit{purple} 12 \AA, \textit{cyan} 14 \AA.
 \textit{Brown} residues remain at their optimized GE geometry, \textit{dark blue} are residues which are screened for active mutations.
 The substrate is visible in the center of the dark blue residues.
-\textbf{B}: Calculated reaction barriers for different layers of optimized residues (based on \cite{hediger2013computational}).
+\textbf{B}: Calculated reaction barriers for different layers of optimized residues (based on Hediger \textit{et al.} (2013b)).
 }
 \label{fig:bcx_constr_constraint_layers}
 \end{figure}
@@ -295,11 +277,7 @@ As pointed out above, when applying constraints on remote parts of the structure
 However, it is reasonable to assume that this relative increase will be the same for all studied structures and so cancels out once mutants are compared relative to each other.  
 Overall, application of constraints to remote parts of the enzyme is necessary to reach the desired calculation efficiency of one reaction barrier per day when running each interpolation step in parallel.
 Furthermore, application of constraints has been widely adopted by the community\cite{himo2006quantum,siegbahn2009recent,liao2012comparison,lonsdale2013quantum}.
-Alternatively, the constraints can be expressed in terms of very large harmonic force constants keeping the atoms in place.
-The time required for optimizing the structures with or without constraints are found to differ by a factor of six (Fig. 4B in Hediger \textit{et al.} (2013b)).
-It is noted that a careful assessment of the modeling strategy is required and relevant irrespective of what kind of quantum chemical method is used to carry out the calculations and can provide critical insight into subsequent improvement efforts.\\
-%\textbf{Calculation parameters.}
-%By analysing stationary point convergence with respect to various gradient convergence requirements, it is found that a reasonable criterion for a stationary structure is to require the total gradient to be below 1 kcal/(mol\AA).\\
+The time required for optimizing the structures with or without constraints are found to differ by a factor of six (Fig. 4B in Hediger \textit{et al.} (2013b)).\\
 \textbf{Mutant activity screening.}
 By a similar approach as the one outline for the modeling of the WT reaction, it is found that different ways of modeling the set of mutants results in significantly different levels of efficiency, both in terms of required manual efforts as well as in computational time requirements.
 We refer to the original publication for details\cite{hediger2013computational} but point out that when, similarly as for the WT, the ES structures of the mutants are based on templates of optimized mutant GE structures, again large gains in computational efficiency are possible (see Fig. 7 in Hediger \textit{et al.} (2013b)).\\
@@ -308,8 +286,8 @@ It is noted that in the current implementation of the presented approach, all mu
 Furthermore, in a number of cases it is not possible to introduce a large side chain in a spatially restricted environment, such cases are discarded.
 Lastly, instead of using a side chain rotamer library, each mutated side chain is locally optimized (using an empirical builtin PYMOL function) in the environment of the enzyme before being submitted to the quantum calculation.
 This approach allowed to screen a set of 317 single mutants, where on average 29 hours are required to complete the calculations of a full reaction barrier using one CPU for each interpolation point.\footnote{All obtained barriers are provided at http://www.scribd.com/doc/133445214/Supp-Mat-Paper-4.}
-From this set of single mutants, at each position $i$ in the active site the mutation giving the mutant with the lowest barrier $X_i$ is identified.
-Then, from this set of single mutants $\{X_i\}$, all possible double mutants $X_i-X_j$ are formed.
+From this set of single mutants, for every position $i, j, ...$ in the active site, the mutation resulting in the mutant with the lowest barrier $X_i, Y_j, ...$ is identified.
+Then, from this set of single mutants $\{K_l\}$, all possible double mutants $(X_i, Y_j)$ are formed.
 Analysis of the reaction barriers of the obtained candidates reveals that the set of double mutants on average has lower activation barriers than the set of single mutants.
 Furthermore, the lowest barriers are found among the double mutants.
 \begin{figure}[htbp] 
@@ -317,12 +295,13 @@ Furthermore, the lowest barriers are found among the double mutants.
 \includegraphics[width=0.95\linewidth]{barrier-distribution.pdf}
 \caption{
 Barrier distribution of single and double BCX mutants\cite{hediger2013computational}.
+The plot is a histogram of reaction barriers, i.e. how many mutants are identified with a given reaction barrier.
 }
 \label{fig:bcx_barrier_distribution}
 \end{figure}
 \newline
 \textbf{Rationalization of mutants.}
-Analysis of the set of mutants indicates that position 127 has strong influence on the activity (9 of 20 single mutants carry a mutation at that position).
+Analysis of the set of mutants indicates that position 127 has strong influence on the activity (9 of 20 best single mutants carry a mutation at that position).
 Inspection of the structural arrangement of the Q127W, W9D/E and N35E mutations points to a number of possible explanations of the observed lower barriers, Fig. \ref{fig:bcx_rationalization}.
 \begin{figure}[htbp] 
 \centering
@@ -337,11 +316,11 @@ Distances in \AA\cite{hediger2013computational}.
 \end{figure}
 As discussed above, the mechanism is postulated to involve a catalytically active, negatively charged E78 residue as the nucleophile.
 If Q127 stabilizes the negative charge by hydrogen bonding, the nucleophilic character of E78 is reduced.
-Removing the possibility to act as a hydrogen bond donor (as in Q127W) but keeping overall structural integrity with a side chain of similar size could result in increased nucleophilicity of E78, Fig. \ref{fig:bcx_rationalization} A.
+Replacing the potential hydrogen bond donor Q127 with a non-hydrogen bonding substitute that can preserve overall structural integrity with a side chain of similar size, such as Q127W, could result in increased nucleophilicity of E78, Fig. \ref{fig:bcx_rationalization} A.
 Furthermore, as illustrated in Fig. \ref{fig:bcx_mechanism}, the transition state involves a partially positive charge on C$_1$ of the substrate.
-Negative charges on side chains (such as in W9D/E) could act as stabilizers of this negative charge and increase catalytic activity in doing so.
-Rationalization of N35 mutations should take into account a recently proposed \textit{reverse protonation} mechanism\cite{joshi2000hydrogen}.
-Again, when ionized, N35E could act in stabilizing C$_1$ but when in neutral protonation state, it could be acting as a hydrogen bond donor to the catalytically active E172.
+Negative charges on side chains (such as in W9D/E) could act as stabilizers of this negative charge and increase catalytic activity in doing so, \textit{i.e.} by stabilization of the transition state.
+Similaryl, when ionized, N35E could act in stabilizing C$_1$ but when in neutral protonation state, it could be acting as a hydrogen bond donor to the catalytically active E172.
+This rationalization of N35 mutations would be related to a recently proposed \textit{reverse protonation} mechanism\cite{joshi2000hydrogen}, which still is the subject of ongoing research.
 
 \newpage
 \subsection{Interesting QM/MM applications}
