@@ -1,6 +1,6 @@
 % *************************************************************************
-\chapter[Working title: Quantum Chemistry Based Enzyme Activity Engineering]
-{Working title: Quantum Chemistry Based Enzyme Activity Engineering\label{ch1}}
+\chapter[Working title: Quantum Chemistry Based Enzyme Activity Engineering and Screening.]
+{Working title: Quantum Chemistry Based Enzyme Activity Engineering and Screening.\label{ch1}}
 \chapauth{Martin R. Hediger$^{a}$, Harm Otten$^{b}$
 \chapaff{$^{a}$Z\"urich\\
 $^{b}$K{\o}benhavn\\
@@ -12,12 +12,12 @@ harm.otten@maxlab.lu.se}}
 % *************************************************************************
 % *************************************************************************
 \section{Motivation}\label{sec:mot}
-Let us imagine two companies A and B.
-Both companies use very similar technical equipment to carry out the biotechnological process $\ce{a}$ $\xrightarrow{Enzyme}$ $\ce{b}$ using two individual versions of the indicated catalyst.
-Company A uses an enzyme with a rate constant $k_\text{A} = 1000s^{-1}$ while company B uses an enzyme with $k_\text{B} = 2000s^{-1}$.
-Letting all other things be equal, the process of company B will therefore only require half the time to produce one Mole of product compared to the time required for company A.
-Company B therefore can save energy required to keep the reaction volume at a certain temperature.
-The need for efficient catalysts arises from such an outline and the commercial implications of these considerations are immediate.\footnote{We use the terms \textit{enzme} and \textit{bio-}/\textit{catalyst} interchangeably.}\\
+Let us imagine two companies $a$ and $b$.
+Both companies use very similar technical equipment to carry out the biotechnological process $\ce{X}$ $\xrightarrow{Biocatalyst}$ $\ce{Y}$ using two different versions of a biocatalyst.
+Company $a$ uses an enzyme with a rate constant $k_{a} = 1000s^{-1}$ while company $b$ uses an enzyme with $k_{b} = 2000s^{-1}$.
+Letting all other things be equal, the process of company $b$ will therefore only require half the time to produce one Mole of product compared to the time required for company $a$.
+Company $b$ therefore can save energy required to keep the reaction volume at a certain temperature.
+The need for efficient catalysts arises from such an outline and the commercial implications of these considerations are immediate.\footnote{In this work, we use the terms \textit{enzme} and \textit{bio-}/\textit{catalyst} interchangeably.}\\
 Increasing the performance of enzymes however is still far from trivial and forms a growing body of research.
 What is clear though is that the development of such catalysts is costly, in terms of manpower, material and energy -- if carried out in the laboratory.
 A number of companies have in fact formed around this demand: Novozymes (DK), Genzyme (US) or DSM (NL) to name but a few\cite{meyer2013use, kirk2002industrial, beilen2002enzyme, schmid2002use}.\\
@@ -26,15 +26,32 @@ The proof that computational results are as reliable as experimental results has
 The foundation for successful application of computational enzyme engineering has thus been laid out.
 It is therefore natural to ask: Why hasn't this become more important yet?
 Why are there not more job openings at pharmaceutical and biotechnology companies looking for computational enzyme engineers?
-The field, after all, did receive the Nobel price in Chemistry 2013.\\
-By giving an overview and some details in this article, we hope to also, at least in part, answer these questions.
+The field, after all, did receive the Nobel price in Chemistry in 2013.
+As a side note, computational modeling of aero- and fluid dynamics, semiconductor properties, pharmaconkinetics/pharmacodynamics or civil engineering is well beyond the point having to justify itself as of strategic relevance.\\
+By giving an overview and some details in this article, we hope to, at least in part, answer these questions.
 % *************************************************************************
 
 
 % *************************************************************************
 \section{Introduction}\label{sec:intro}
-We provide an introduction into the topic of enzyme catalysis modeling for interested people from inside and outside of the field.\\
-We outline the latest achievements, methods in use and outline required developments to establish computational enzyme engineering not only in the literature, but also in (commercial) practice.\\
+In this review, we aim to provide an introduction into the topic of modeling of enzyme catalysis for people from both within or from outside the field, with emphasis on aspects of activity screening and some emphasis on commercial applicability.
+We outline the latest achievements, methods in use and required developments to further establish computational enzyme engineering and screening also in commercial practice.\\
+While the process engineering team in company $a$ from above is working on improving reaction conditions, consider the enzyme engineer required to engineer the currently used catalyst to match (and possibly outperform) the activity of the catalyst used by company $b$.
+Following the hypothesis that the function of an enzyme depends on its structure, in order to change the function, some kind of change to the structure has to be introduced and this in general requires the introduction of one or more mutations of amino acids in the primary structure of the enzyme.
+However, as is well known in the community, it is almost impossible to predict, how a mutated variant of an enzyme will behave[\textcolor{red}{REFS?}, Bornscheuer?].
+Will it at all be possible to express it and will it even fold and if so, will it be more or less active and specific relative to the wild type?
+Are its pH properties still the same and is it of similar temperature stability?
+Even the most reasonably suggested mutations (except for elimination of the catalytic residues) will not allow to decide \textit{qualitatively} with confidence if the mutated enzyme will be more or less active.
+Since it is not possible to predict the effects of structural changes in an enzyme, it appears the only reasonable strategy is to carry out systematic screening studies.\footnote{By \textit{screening} we mean the construction of a large library of mutants which are inspected and compared for a specific property like activity.}
+As was pointed out initially, such studies are expensive and therefore an alternative is to carry it out on the computer.
+However, due to the computational effort required to reach a certain accuracy, either the computer power needs to be very large or the method has to be fast.
+There is an inherent trade off in this situation.
+If the approach is to start the screen with a fast, less accurate method used to narrow down the possible candidates, after identification of these initial lead structures higher level methods can be used to narrow down and further characterizse the most promising candidates.
+
+\textbf{Smart notes/Unordered.}
+\begin{itemize}
+\item At the most fundamental level, computational descriptions of a molecular system is done by (parametric) \textit{force fields} or \textit{ab initio} electronic structure methods.
+It should be the question of interest that guides in the selection of the appropriate computational method and not the other way around.\\
 Modeling involving enzymes happens in different forms.
 In one form, the enzyme is a constant parameter and the variable is the inhibitor.
 These tasks are usually addressed by docking approaches and studies involving millions of substrates have been published\cite{zhou2010high}.
@@ -42,17 +59,24 @@ In another form, the substrate is constant but the enzyme can vary.
 The approaches to this task, as it appears, are much less established.
 The reasons are manifold, primarily it appears that modeling of an enzyme is less straightforward than a small inhibiting molecule.
 Again, why is that?
+\item Modeling of reactivity always involves modeling of a transition state, which is non-trivial and for which there is no standard fail safe approach.
+\item Commercial application of QM activity screening is restricted by time-to-delivery of results, accuracy, screening width and convenience of use.
+\item The bottle neck in biofuel preparation from biobased materials is hydrolysis of cellulosic materials. Development of improved catalysts clearly could boost this field and has immediate impact on company performance.
+\end{itemize}
 
-As is known in the community, enzymes behave highly non-predictable.
-The best reasoning about a mutation (except for elimination of the catalytic residues) will not even allow to decide \textit{qualitatively} if the mutated enzyme will be more or less active.
+
+
 Shifts in pH optima might be predicted more readily\cite{ludwiczek2013strategies}.
-It is proposed therefore that in cases where no \textit{a priori} knowledge about how an enzyme should be engineered is available, the only reasonable strategy is to carry out systematic screening studies.
-For these to be feasible, either the computer power needs to be very large or the method has to be fast, there is an inherent trade off in this situation.
-Once initial lead structures are identified, higher level methods can be used to narrow down on most promising candidates.
 
 This review is written for a more general audience.
 For specialized details, the reader is referred to the primary literature.
-The intention is to provide an accessible introduction into the field of quantum chemical modeling of enzymatic reactions, highlight advantages of using quantum chemistry and also point out points where special care needs to be taken.
+The intention is to provide an accessible introduction into the field of quantum chemical modeling of enzymatic reactions, highlight advantages of using quantum chemistry and also point out points where special care needs to be taken.\\
+
+By 2014, quantum chemical methods have been in use to study enzymatic reactions for around three decades.
+What is new however is that quantum chemical methods can now be used also in \textit{in silico} screening assays of enzymatic activity.
+
+Since molecular modeling of enzymes has been reviewed extensively over the recent years, we do not attempt to provide all fundamentals of the subject.
+Instead, we focus on screening aspects of computational enzyme engineering.
 
 Aims of quantum chemical screening assay
 \begin{itemize}
@@ -152,7 +176,7 @@ In case no generally accepted mechanism is reported, a preceeding study could an
 % *****************************************************************
 % Upcoming
 \subsubsection{{\textit{Candida antarctica} Lipase B (CALB) Engineering}}
-In the studies related to CALB, we answer the question if quantum chemical methods can be used for enzyme activity screening, develop an efficient modeling protocol and verify the calculated predictions with experimental results.
+In the studies related to CALB\cite{10.1371/journal.pone.0049849, hediger2013silico}, we answer the question if quantum chemical methods can be used for enzyme activity screening, develop an efficient modeling protocol and verify the calculated predictions with experimental results.
 The model system used in this study was CALB and the reaction studied is the hydrolysis of $N$-benzyl-2-chloroacetamide.
 
 
