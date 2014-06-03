@@ -60,3 +60,10 @@ set ray_shadow_decay_factor, 0.1
 set ray_shadow_decay_range, 2
 unset depth_cue
 ray 1200, 1200
+
+Notes 30.05.14
+---------------------------------------------
+Conclusions:
+Outlook? Summary? How to evolve the field?
+And when we look back at the two companies from the beginning?
+Requirements: Structure (only) required if *this* method should be used.

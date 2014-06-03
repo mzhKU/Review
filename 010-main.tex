@@ -1,6 +1,6 @@
 % *************************************************************************
-\chapter[Working title: Quantum Chemistry Based Enzyme Activity Engineering and Screening.]
-{Working title: Quantum Chemistry Based Enzyme Activity Engineering and Screening.\label{ch1}}
+\chapter[Working title: Computational Enzyme Engineering and Screening by Quantum Chemical Methods.]
+{Working title: Computational Enzyme Engineering and Screening by Quantum Chemical Methods.\label{ch1}}
 \chapauth{Martin R. Hediger$^{a}$, Harm Otten$^{b}$
 \chapaff{$^{a}$Z\"urich\\
 $^{b}$K{\o}benhavn\\
@@ -41,32 +41,45 @@ Following the hypothesis that the function of an enzyme depends on its structure
 However, as is well known in the community, it is almost impossible to predict, how a mutated variant of an enzyme will behave[\textcolor{red}{REFS?}, Bornscheuer?].
 Will it at all be possible to express it and will it even fold and if so, will it be more or less active and specific relative to the wild type?
 Are its pH properties still the same and is it of similar temperature stability?
-Even the most reasonably suggested mutations (except for elimination of the catalytic residues) will not allow to decide \textit{qualitatively} with confidence if the mutated enzyme will be more or less active.
-Since it is not possible to predict the effects of structural changes in an enzyme, it appears as if the only reasonable strategy were to carry out systematic screening studies.\footnote{By \textit{screening} we mean the construction of a large library of mutants which are inspected and compared for a specific property like activity.}
-As was pointed out initially, such studies are expensive and therefore an alternative is to carry it out on the computer.
-However, while the computational effort required is not of the same kind as the laboratory effort, in order to reach a certain accuracy in the prediction still either the computer power needs to be very large or the method used for in screening has to be efficient.
-There is an inherent trade off in this situation.
-A popular approach emerging is to screen the initial library using a fast, cost efficient, lower level method in order to identify possible candidates and then to pipeline these candidates to a more demanding computational method for further characterization.
+Even the most reasonably suggested mutations (except for elimination of the catalytic residues) will not allow to predict \textit{qualitatively} with confidence if the mutated enzyme will be more or less active.
+Therefore it appears as if the only reasonable strategy were to carry out systematic screening studies.\footnote{By \textit{screening} we mean the construction of a large library of mutants which are inspected and compared for a specific property like activity.}
+As was pointed out initially, such studies are expensive in the laboratory and therefore an alternative is to carry them out on the computer.
+The aim of such initial computational screening is not to provide high-accuracy kinetic data but much rather to provide a reliable, qualitative activity estimate of a preferably large mutant library.
+It is important to note that while the initial computational screening might be of limited accuracy, its major value is the provision of a systematically developed library of mutants.
+Based on the screening, promising candidates can then be pipelined into a more demanding computational method for further characterization.
+
+\noindent\textcolor{red}{[Physical property of interest:]}\\
+The method has to be adapted to the physical property of interest\\
+- Thermal and structural integrity\\
+- pH dependent activity\cite{ludwiczek2013strategies}\\
+- Active site hydration\\
+- Binding, \textit{c.f.} drug design where the target protein is constant\\
+- Catalysis: \textit{C.f.} biofuel production or synthesis applications where the substrate is mostly non-variable.
+
+\noindent\textcolor{red}{[Different modeling objectives:]}\\
+1) One Enzyme -- Multiple Substrates:
+These tasks are usually addressed by docking approaches and studies involving millions of substrates have been published\cite{zhou2010high}.\\
+2) Multiple Enzymes -- One Substrate:
+The approaches to this task, as it appears, are much less established.
+Why is that?
+A number of factors can be of influence among which are that modeling of different variants of an enzyme will also mean to differentiate between multiple (possibly coupled) protonation states which is non-trivial.
+Furthermore, modeling of reactivity always involves modeling of a transition state, which is non-trivial and for which there is no standard fail safe approach.
+
+\noindent\textcolor{red}{[Application context:]}\\
+- Academic: screening can assist in generation of new hypothesis about structure/function relationships\\
+- Commercial: commercial application is restricted by time-to-delivery of predictions, accuracy/reliability, screening spectrum and convenience of use.
+Notefully, in a commercial context, accuracy can be of less value than reliable qualitative prediction of relative activities.
+
 
 \textbf{Smart notes/Unordered.}
 \begin{itemize}
 \item At the most fundamental level, computational descriptions of a molecular system is done by (parametric) \textit{force fields} or \textit{ab initio} electronic structure methods.
 It should be the question of interest that guides in the selection of the appropriate computational method and not the other way around.\\
-Modeling involving enzymes happens in different forms.
-In one form, the enzyme is a constant parameter and the variable is the inhibitor.
-These tasks are usually addressed by docking approaches and studies involving millions of substrates have been published\cite{zhou2010high}.
-In another form, the substrate is constant but the enzyme can vary.
-The approaches to this task, as it appears, are much less established.
-The reasons are manifold, primarily it appears that modeling of an enzyme is less straightforward than a small inhibiting molecule.
-Again, why is that?
-\item Modeling of reactivity always involves modeling of a transition state, which is non-trivial and for which there is no standard fail safe approach.
-\item Commercial application of QM activity screening is restricted by time-to-delivery of results, accuracy, screening width and convenience of use.
 \item The bottle neck in biofuel preparation from biobased materials is hydrolysis of cellulosic materials. Development of improved catalysts clearly could boost this field and has immediate impact on company performance.
 \end{itemize}
 
 
 
-Shifts in pH optima might be predicted more readily\cite{ludwiczek2013strategies}.
 
 This review is written for a more general audience.
 For specialized details, the reader is referred to the primary literature.
@@ -147,9 +160,9 @@ Different methods used should be briefly described to make it easier for the rea
 
 % *************************************************************************
 % *************************************************************************
-\section{Applications}\label{sec:apps}
+\section{Activity Screening Applications}\label{sec:apps}
 
-\subsection{General overview}
+\subsection{Overview}
 We have recently presented two studies where new functionality has been introduced into an enzyme active site using quantum chemical methods\cite{10.1371/journal.pone.0049849,hediger2013silico,hediger2013computational}.\\
 It is currently agreed that in many cases, rational arguments alone are not sufficient to design new reactivity in an active site.
 Put simply, enzymes do not behave in the way the engineer hopes for.
@@ -175,7 +188,7 @@ In case no generally accepted mechanism is reported, a preceeding study could an
 
 % *****************************************************************
 % Upcoming
-\subsubsection{{\textit{Candida antarctica} Lipase B (CALB) Engineering}}
+\subsection{{\textit{Candida antarctica} Lipase B}}
 In the studies related to CALB\cite{10.1371/journal.pone.0049849, hediger2013silico}, we answer the question if quantum chemical methods can be used for enzyme activity screening, develop an efficient modeling protocol and verify the calculated predictions with experimental results.
 The model system used in this study was CALB and the reaction studied is the hydrolysis of $N$-benzyl-2-chloroacetamide.
 
@@ -230,7 +243,7 @@ Real world applications of BCX: production of biofuels and papers, CALB: pharmac
 % -----------------------------------------------------------------
 
 \newpage
-\subsubsection{\textit{Bacillus circulans} xylanase engineering}
+\subsection{\textit{Bacillus circulans} xylanase}
 In order to address the points summarized above and to show general applicability of the approach outlined for CALB, the xylanase of \textit{Bacillus circulans} (BCX) is engineered to be catalytically active towards an artifical substrate ($ortho$-nitrophenol-$\beta$-xylobioside), Fig. \ref{fig:substrate}.
 \begin{figure}[htbp] 
 \centering
@@ -347,12 +360,10 @@ Similaryl, when ionized, N35E could act in stabilizing C$_1$ but when in neutral
 This rationalization of N35 mutations would be related to a recently proposed \textit{reverse protonation} mechanism\cite{joshi2000hydrogen}, which still is the subject of ongoing research.
 
 \newpage
-\subsection{Interesting QM/MM applications}
+\subsection{Further Screening Applications}
 \textbf{The cocaine hydrolase guys}\\
 Make a cocaine hydrolase better\cite{gao2006computational}.
 
-\subsection{Requirements for advancement of methods}
-Experimental catalytic data ($k_\text{cat}$) of many mutants to validate against.
 % *************************************************************************
 
 
@@ -367,3 +378,6 @@ Experimental catalytic data ($k_\text{cat}$) of many mutants to validate against
 \item Calculation times depend strongly on model chemistry used
 \item Not yet as established and convenient to use like e.g. docking software
 \end{itemize}
+
+\subsection{Required Future Development Actions}
+Experimental catalytic data ($k_\text{cat}$) of many mutants to validate against.
