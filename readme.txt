@@ -1,7 +1,6 @@
 QM Calculations for Enzyme Activity Screening
 ---------------------------------------------
 Martin Hediger
-Harm Otten
 
 Style Guide (recommended)
 ---------------------------------------------
