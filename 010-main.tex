@@ -191,14 +191,11 @@ Computational considerations are only rarely taken into account but greatly help
 % *************************************************************************
 \section{Activity Screening Applications}\label{sec:apps}
 \subsection{Overview}\label{sec:overview}
-Independent of the method, a screening assay should be
+Practical applicability of QM based enzyme screening has a couple of problems, and independent of the method, a screening assay should be:
 \begin{itemize}
 \item Fast
 \item easy to setup
 \item qualitative accuracy
-\end{itemize}
-Practical applicability of QM based enzyme screening has a couple of problems:
-\begin{itemize}
 \item The structures of the enzyme in the relevant state of the reaction need to be available, ie. an enzyme-substrate complex (ES) and a transition state (TS) analog (usually an inhibited species)
 \item If the mechanism is not established, the reaction can usually follow various pathways -- these would need to be checked in order to find a best guess at the rate determining step
 \item Identification of the transition state is difficult and depends intimatly on the structure, optimizing two structures differing by 0.1 \AA in a particular bond length can result in identification or not identification of the TS
@@ -320,7 +317,6 @@ Secondly, the set of positions screened was directed by prior knowledge, instead
 %\end{itemize}
 % -----------------------------------------------------------------
 
-\clearpage
 \subsection{Engineering \textit{Bacillus circulans} xylanase}
 The xylanase of \textit{Bacillus circulans} is applied in paper production\cite{bajpai1999application, buchert1994application}.
 Fields related to degradation of plant materials are \textit{e.g.} biofuel production.\\
@@ -349,6 +345,7 @@ C$_1$ indicating nucleophilic carbon of first xylose unit\cite{hediger2013comput
 }
 \label{fig:bcx_mechanism}
 \end{figure}
+Noteworthy, the substrate isomerises from a chair to a boat conformation.
 As outlined in the methods section, the reaction barrier is mapped out by fixing the reaction coordinate ($x_1$ in Fig. \ref{fig:bcx_mechanism}) at discrete, decrementing values while optimizing the rest of the protein structure.
 Since the reaction consists of two concerted events (nucleophilic attack by E78 and proton transfer from E172 to ONP), in principle a two-dimensional potential energy surface could be mapped out to determine the reaction barrier.
 However, since proton transfer is associated with a rearrangement of the electronic structure, this reaction coordinate is left unconstrained and is handled solely by the quantum chemical method, \textit{i.e.} the proton is free to transfer from or remain on E172.
