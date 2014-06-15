@@ -1,11 +1,9 @@
 % *************************************************************************
-\chapter[Working title: Computational Enzyme Engineering and Activity Screening Using Quantum Chemical Methods.]
-{Working title: Computational Enzyme Engineering and Activity Screening Using Quantum Chemical Methods.\label{ch1}}
-\chapauth{Martin R. Hediger$^{a}$, Harm Otten$^{b}$
+\chapter[Computational Enzyme Engineering: Activity Screening by Quantum Chemical Methods.]
+{Computational Enzyme Engineering: Activity Screening by Quantum Chemical Methods.\label{ch1}}
+\chapauth{Martin R. Hediger$^{a}$
 \chapaff{$^{a}$Z\"urich\\
-$^{b}$K{\o}benhavn\\
-m---@---.ch\\
-harm.otten@maxlab.lu.se}}
+m---@---.ch}}
 % *************************************************************************
 
 
@@ -44,8 +42,17 @@ The foundation for successful application of computational enzyme engineering ha
 It is therefore natural to ask: Why hasn't this become more important yet?
 Why are there not more job openings at pharmaceutical and biotechnology companies looking for computational enzyme engineers?
 The field, after all, did receive the Nobel price in Chemistry in 2013.
-As a side note, computational modeling of aero- and fluid dynamics, semiconductor properties, pharmaconkinetics/pharmacodynamics or civil engineering is well beyond the point having to justify itself as of strategic relevance.\\
-By giving an overview and some details in this article, we hope to, at least in part, answer these questions.
+As a side note, computational modeling of aero- and fluid dynamics, semiconductor properties, pharmaconkinetics/pharmacodynamics or civil engineering is well beyond the point of having to justify itself as of strategic relevance.\\
+More important questions asked and answered in this review:
+\begin{itemize}
+\item Is it possible to screen for mutant activity using quantum chemical methods?
+\item Which quantum chemical model can reproduce the accepted mechanism?
+\item What are the time requirements depending on the model size?
+\item How should the program be configured?
+\item What modeling procedure/sequence is needed? Which tools are useful?
+\end{itemize}
+By giving an overview and some details in this article, I hope to, at least in part, answer the above questions.\\
+\textcolor{red}{[ARE THE QUESTIONS ANSWERED?]}
 % *************************************************************************
 
 
@@ -122,12 +129,37 @@ Implicitly this assumes high substrate concentration such that $k_\text{cat}$ be
 The most basic requirements are that a structure representing a bound intermediate along the reaction pathway is available.
 Alternatively, a homology model could be used.
 Furthermore, ideally the mechanism for the rate determining step is established in the literature.
-In case no generally accepted mechanism is reported, a preceeding study could analyse kinetically competing mechanism alternatives.
+In case no generally accepted mechanism is reported, a preceeding study could analyse kinetically competing mechanism alternatives.\\
+\textcolor{red}{\textbf{[Aspects of model size and modeling.]}}
+It is frequently observed that specific pairs of mutants can not be accommodated together because of the size of the side chains.
+In order to facilitate the approach, these variants are discarded from the screen.
+Furthermore, side chain orientations can be oriented in various ways and are defaulted using some approach (local, empirical function based optimization in PyMOL).
+At the least, this removes ambiguity in the modeling step.
+Ionization states of side chains greatly complicate the screening and the best approach most likely is to consider different ionization states only at a later stage of the assay.\\
+\textcolor{red}{\textbf{[Interpolation/Linear transit/Adiabatic mapping.]}}
+\begin{figure}[htbp] 
+\centering
+\begin{minipage}{0.43\linewidth}
+\includegraphics[width=0.90\linewidth]{wt-ini.png}
+\end{minipage}
+\begin{minipage}{0.55\linewidth}
+\includegraphics[width=1.00\linewidth]{calb-conv.pdf}
+\end{minipage}
+\caption{
+Intermediate structures along reaction coordinate of CALB reaction.
+}
+\label{fig:calb_reaction}
+\end{figure}
 
 
 
-\subsection{Quantum Chemical Methods}\label{sec:quantum_chemical_methods}
-\textit{Every method has it's chemistry}.
+\subsection{\textcolor{red}{Quantum Chemical Calculation Engines}}\label{sec:quantum_chemical_methods}
+A number of issues arise in the development of the modeling method.
+The method needs to consider the trade-off between accuracy and efficiency, it should be easily set up and allow scale up from a selected few to a large, systematic library of variants.
+These criteria encompass not only the calculation engine, but also to the molecular modeling software used in the preparation of the molecular models.
+An initial survey revealed that semi-empirical quantum chemical methods meet the requirements of the method.
+They are readily available in a number of programs (GAMESS, MOPAC and others), they are very efficient and test calculations show that they (not all) reproduce the generally accepted mechanism of the catalytic triad.\\
+It is essential to note that \textit{every method has it's chemistry}.
 The results of one quantum chemical method need to be verified, ideally against high-level standard reference methods.
 If a method can reproduce the canonical mechanism then there is a good chance that at least qualitatively reliable conclusions can be made using this method.
 \begin{itemize}
@@ -137,9 +169,13 @@ If a method can reproduce the canonical mechanism then there is a good chance th
 \item Explain available software: GAMESS, MOPAC
 \item Explain parameters of PM6: MOZYME, gradient convergence and NDDO cutoff
 \end{itemize}
+\textcolor{red}{[Assessment of semi-empirical methods.]}
+Reliability of the quantum chemical method in the studies presented in this review are established by comparing various geometrical parameters (\textit{i.e.} transition-state bond lengths) which allows to identify if a method agrees with the generally accepted mechanism.
+Further criteria are then required computational effort and amenability to data analysis and programming.\\
 
-\subsection{Software}\label{sec:software}
-Methods are of limited use if they can not be applied, therefore available modeling software is a very important factor.\\
+\subsection{Calculation and Modeling Software}\label{sec:software}
+Various engines are implemented in different calculation software.
+Methods on paper are of limited use if they can not be applied, therefore also available modeling software is a very important factor.\\
 Modeling software is available, PyMOL, Schr\"odinger, Chem?? (Walter Thiel, commercially) but everything is still very much custom work (especially the data analysis, programs output format is like from last century), this is probably the major reason preventing the use of QM as standard method in industry.
 Compare docking and MD methods have software which is designed towards user friendlyness and has become established in industry.
 GTKDynamo is an exceptionally good example for what it should look like, unfortunately only small community.\\
@@ -166,65 +202,128 @@ Practical applicability of QM based enzyme screening has a couple of problems:
 \item The structures of the enzyme in the relevant state of the reaction need to be available, ie. an enzyme-substrate complex (ES) and a transition state (TS) analog (usually an inhibited species)
 \item If the mechanism is not established, the reaction can usually follow various pathways -- these would need to be checked in order to find a best guess at the rate determining step
 \item Identification of the transition state is difficult and depends intimatly on the structure, optimizing two structures differing by 0.1 \AA in a particular bond length can result in identification or not identification of the TS
+\item \textcolor{red}{Focus on catalysis, assume binding is similar over mutant range\cite{ludwiczek2013strategies}- $K_\text{M}$s are similar for mutants}
 \end{itemize}
 
 % *****************************************************************
-% Upcoming
-\subsection{{\textit{Candida antarctica} Lipase B}}
-In the studies related to CALB\cite{10.1371/journal.pone.0049849, hediger2013silico}, we answer the question if quantum chemical methods can be used for enzyme activity screening, develop an efficient modeling protocol and verify the calculated predictions with experimental results.
-The model system used in this study was CALB and the reaction studied is the hydrolysis of $N$-benzyl-2-chloroacetamide.
-
-\textcolor{blue}{
-UPCOMING\\
-The questions answered in this study are:
-\begin{itemize}
-\item Is it possible to screen for mutant activity using quantum chemical methods?
-\item Which quantum chemical model can reproduce the accepted mechanism?
-\item What are the time requirements depending on the model size?
-\item How should the program be configured?
-\item What modeling procedure/sequence is needed? Which tools are useful?
-\end{itemize}
+\clearpage
+\subsection{Engineering {\textit{Candida antarctica} Lipase B}}
+\textbf{Relevance and Summary.}
+Using CALB as a test case, we develop an efficient modeling protocol, verify the calculations with experimental results and show how quantum chemical methods can be used for enzyme activity screening\cite{10.1371/journal.pone.0049849, hediger2013silico}.
+The reaction studied is the hydrolysis of $N$-benzyl-2-chloroacetamide.
+CALB has been highly characterized over the years such that its structure, physical properties and expression systems are well documented\cite{uppenberg1994sequence, uppenberg1995crystallographic}.
+The enzyme is a highly established catalyst with applications in organic synthesis, formulation technology\cite{gayot2003modification} and in kinetic resolution of racemic mixtures\cite{gotor2006candida, naik2010lipases, chaput2012contribution}.
+Furthermore, since the enzyme is known for its reactive promiscuity\cite{bornscheuer2004catalytic, CBIC:CBIC200800318}, it provides an ideal development platform for applications for which existing biocatalysts are of restricted efficiency.
+One such application is the hydrolysis of amide bond containing lipophilic compounds.
+While in principle amide bonds can be cleaved by proteases or peptidases, these enzymes are found to be less active towards hydrophobic substrates such as amide containing lipids\cite{nakagawa2007engineering}.
+Therefore, engineering CALB activity towards ${\text{CO}-\text{NH}}$ bond containing hydrophobic substrates would greatly expand its applicability and provide a new tool to the toolbox of chemical biotechnology.\\
+\textbf{Structure and Mechanism.}
+Briefly, the active site in CALB consists of a catalytic triad (S105, D189 and H224) and an associated oxyanion hole.
+The mechanism is understood to follow the generally accepted mechanism of serine protease active sites\cite{hedstrom2002serine}, Fig. \ref{fig:calb-mechanism}.
 \begin{figure}[htbp] 
-\centering
-\begin{minipage}{0.43\linewidth}
-\includegraphics[width=0.90\linewidth]{wt-ini.png}
-\end{minipage}
-\begin{minipage}{0.55\linewidth}
-\includegraphics[width=1.00\linewidth]{calb-conv.pdf}
-\end{minipage}
+\includegraphics[width=0.98\linewidth]{calb-mechanism.eps}
 \caption{
-Intermediate structures along reaction coordinate of CALB reaction.
+Reaction scheme for the formation of the tetrahedral intermediate in CALB.
+In this work, R$_1$: -CH$_2$-Cl, R$_2$: -CH$_2$-C$_5$H$_6$\cite{hediger2013silico}.
 }
-\label{fig:calb_reaction}
+\label{fig:calb-mechanism}
 \end{figure}
-CALB is used as a versatile catalyst in a variety of applications among which enzymatic kinetic resolution of enantiomeric mixtures is of high pharmaceutical importance\cite{gotor2006candida}.
-While CALB is also known for its reactive promiscuity\cite{CBIC:CBIC200800318}, if the catalyst can be engineered such as to increase its performance for certain of these applications, possible bottle-necks in production could be widened.\\
-About the cutoff: this is only relevant in studies where experimental data for many mutants is available.
-Then it can be used to assess the lower barrier for the accuracy.
-Given all approximations, x out of y mutants are correctly predicted.
-So any method improving on the approximations should provide at least at many correct hits.\\
-About the cutoff: this is only relevant in studies where experimental data for many mutants is available.
-Then it can be used to assess the lower barrier for the accuracy.
-Given all approximations, x out of y mutants are correctly predicted.
-So any method improving on the approximations should provide at least at many correct hits.
-A number of weak points remain:
-\begin{itemize}
-\item Selection of model ambiguous/not full structure
-\item Not systematically screening all mutants
-\item No other protein system/enzymatic reaction tested
-\item Binding effects not considered
-\item Large rearrangements can not be modeled
-\item Semi-empirical methods might not be adequate for metals
-\item Subsequent steps of reaction not modeled (eg. product leaving of active site)
-\item Different ionization states of residues
-\end{itemize}
+The rate determining step is believed to be the nucleophilic attack by O$^\gamma$ of S105 on the carbonyl carbon C$^{20}$ of the substrate.\\
+\textbf{Scale up, Experimental Verification and Calibration.}
+After establishing a proof-of-concept of the screening approach using a limited set of three mutants\cite{10.1371/journal.pone.0049849}, the method was scaled up to screen a set of 386 mutants of the CALB active site\cite{hediger2013silico}.
+This set consisted of single- to eight-fold mutants and the activity of 22 mutants of the set was measured experimentally.\\
+The method was calibrated in terms of qualitative prediction rate, \textit{i.e.} how likely can the method predict if a mutant will have higher or lower activity than the wild type.
+This calibration requires to note a couple of issues which are discussed in the following.
+In the experiments, the activity relative to the WT, in principle, ranges from zero to infinity.
+In the calculations on the other hand, the activity of a mutant is determined by the difference between the mutant reaction barrier and the wild type barrier.
+Even for a very active mutant, the reaction barrier is not expected to be zero and so in this approach, since lower barriers are related to higher activities, the amount by which a mutant can be more active than the wild type is in principle limited.
+Conversely, since the reaction barrier of a mutant can in principle be arbitrarily high, the amount by which a mutant could be less active than the wild type might be infinite.
+A direct quantitative relationship between reaction barrier differences and relative experimental activities is therefore not very meaningful, the value of a computational screening study in a production environment is to indicate which mutants should be considered for further study, and not so much to quantify their activity.
+Instead, only qualitative relative activities (higher or lower than WT) are determined, both for the experimental and calculated results, and used for the calibration of the predictivity.\\
+To cluster the results into increased/decreased activities it is therefore necessary to decide above/below which activity a mutant is considered being part of either the higher-activity or lower-activity clusters.
+Considering the relatively narrow spread of experimental activities\footnote{The experimental improvement factors range from 0 to roughly 11 times wild type activity.}, mutants with $\geq1.2$ times the wild type activity are considered improving while mutants with $<0.8$ times the wild type activity are considered degrading (mutants inbetween are considered as neither improving nor degrading)\cite{hediger2013silico}.
+The computational results are clustered in a similar way.
+A cutoff value for the calculated reaction barriers is introduced \textit{below} which the mutant is considered improving and above which the mutant is considered degrading.
+Subsequently, out of the mutants predicted to have higher activity, a set containg as many mutants as can be further characterized is selected and suggested for further study, either computationally or experimentally.
+It is found that at a specific cutoff value (12.5 kcal/mol), the method qualitatively predicts activity of 15 out of 22 mutants correctly, Fig. \ref{fig:diag-predictivity}.
+\begin{figure}[htbp] 
+\includegraphics[width=1.00\linewidth]{diag-predictivity-truncated.pdf}
+\caption{
+Agreement between predicted and experimental qualitative activity relative to wild type\cite{hediger2013silico}.
 }
-
-Real world applications of BCX: production of biofuels and papers, CALB: pharmaceutical and fine chemicals[REFS?].
+\label{fig:diag-predictivity}
+\end{figure}
+Noteworthy, mutants with both higher as well as lower activity are correctly predicted.
+Importantly, the advantage of clustering the mutants in this way is not apparent maximum agreement with the experimental data in the first place, but much rather to provide a lower limit for the predictivity under the given set of approximations.
+It needs to be kept in mind that in such a computational enzyme activity assay, it is unlikely to have calibration data available since it is performed \textit{before} wet-lab experiments are carried out.
+We find this approach furthermore justified since at the initial outset of a screening study, the focus is mostly on narrowing down possible candidates from a large library, \textit{i.e.} the focus is on obtaining qualitative conclusions rather than quantitative results\cite{agresti2010ultrahigh}.\\
+\textbf{Screening Results and Discussion of Mutants.}
+In the set of 386 screened mutants, we identified only three mutants with a barrier lower than the wild type (a double, a triple and a four-fold mutant).
+Analysis of the screening results was further focused on two residues: W104 and I189.
+These are selected because mutations of these positions can provide more space for the substrate which is hypothesized to lead to increased activity, Fig. \ref{fig:calb-views}.
+\begin{figure}[htbp] 
+%\centering
+%\begin{minipage}{0.42\linewidth}
+\textbf{A}
+%\end{minipage}
+%\begin{minipage}{0.42\linewidth}
+%\textbf{B}
+%\end{minipage}
+%\begin{minipage}{0.49\linewidth}
+%\includegraphics[width=0.95\linewidth]{calb-total-view.png}
+%\end{minipage}
+%\begin{minipage}{0.49\linewidth}
+\includegraphics[width=0.95\linewidth]{calb-active-site.png}
+%\end{minipage}
+\caption{
+%\textbf{A}: CALB total view, active site visible in the lower part of the panel.
+%\textbf{B}: Active site, some residues omitted for clarity.
+CALB active site, some residues omitted for clarity.
+SUB labels the substrate.
+}
+\label{fig:calb-views}
+\end{figure}
+As seen, W104 and I189 are in direct proximity to the substrate.
+From the single mutant data, it is found that the mutants W104Q or W104Y have barriers just around the cutoff value of 12.5 kcal/mol.
+However, when in combination with other mutations, such as G39A-W104F-A141Q-I189A (8.3 kcal/mol) or G39A-T103G-W104Y-A141N (9.8 kcal/mol), these mutations are among the most active ones found and it is clear that arriving at such combinations by purely rational considerations is virtually impossible.\\
+Analysis of mutations of I189, Fig. \ref{fig:i189g} provides additional intersting insight.
+\begin{figure}[htbp] 
+\includegraphics[width=0.95\linewidth]{011-diag_eval_scre_setL-i189.pdf}
+\caption{
+I189G screening.
+}
+\label{fig:i189g}
+\end{figure}
+Five different mutations are screened but the analysis is focused on I189G.
+As a single mutant, I189G is found to be completely unproductive (18.9 kcal/mol), in a double mutant the barrier is reduced in one case to around 17.5 kcal/mol and in G39A-A141Q-I189G-L278A, the I189G mutation is among the top three mutants found (6.3 kcal/mol).
+Conversely, the mutant G39A-A141Q-L278A has a moderately low barrier (10.9 kcal/mol).
+These results emphasize the fact that the activity modulating effect of specific point mutations behaves strongly non-linearly and should be kept in mind when considering which mutations to include in further studies.
+Put differently, these findings illustrate that it is difficult to predict the activity of combination mutants based on single mutant data alone.
+Since, apparently, single mutant data is not sufficient to predict combination mutant activity, screening a wide library of mutants should form an essential initial part of any enzyme engineering project.
+Furthermore, it is immediately clear that computational activity screening, thus, can provide major advantage in cost and material use reduction to the overall enzyme engineering efforts.\\
+\textbf{Outlook.} A number of points remained unaddressed in this study.
+Among these is the fact that not the complete enzyme structure was used in the calculations, instead only amino acids within 8$\AA$ of the substrate have been included in the model.
+The backbone sequence is therefore interrupted, introducing ambiguity in how to orient hydrogen atoms used to complete the valences at the interruption points.
+Secondly, the set of positions screened was directed by prior knowledge, instead of an unbias systematic screening and lastly, it remained to be shown that the presented approach was also useful for mechanistically different reactions in different enzymes.
+%
+% Weak points of the study to be addressed in BCX project:
+%\begin{itemize}
+%\item Selection of model ambiguous/not full structure
+%\item Not systematically screening all mutants
+%\item No other protein system/enzymatic reaction tested
+%\item Binding effects not considered
+%\item Large rearrangements can not be modeled
+%\item Semi-empirical methods might not be adequate for metals
+%\item Subsequent steps of reaction not modeled (eg. product leaving of active site)
+%\item Different ionization states of residues
+%\item From a modeling point of view it's a disadvantage not to include the full structure in the calculation because there is ambiguity on how to model the backbone termini
+%\end{itemize}
 % -----------------------------------------------------------------
 
-\newpage
-\subsection{\textit{Bacillus circulans} xylanase}
+\clearpage
+\subsection{Engineering \textit{Bacillus circulans} xylanase}
+The xylanase of \textit{Bacillus circulans} is applied in paper production\cite{bajpai1999application, buchert1994application}.
+Fields related to degradation of plant materials are \textit{e.g.} biofuel production.\\
 In order to address the points summarized above and to show general applicability of the approach outlined for CALB, the xylanase of \textit{Bacillus circulans} (BCX) is engineered to be catalytically active towards an artifical substrate ($ortho$-nitrophenol-$\beta$-xylobioside), Fig. \ref{fig:substrate}.
 \begin{figure}[htbp] 
 \centering
@@ -318,7 +417,7 @@ The plot is a histogram of reaction barriers, i.e. how many mutants are identifi
 \label{fig:bcx_barrier_distribution}
 \end{figure}
 \newline
-\textbf{Rationalization of mutants.}
+\textbf{\textcolor{red}{Rationalization of mutants[EXPAND!].}}
 Analysis of the set of mutants indicates that position 127 has strong influence on the activity (9 of 20 best single mutants carry a mutation at that position).
 Inspection of the structural arrangement of the Q127W, W9D/E and N35E mutations points to a number of possible explanations of the observed lower barriers, Fig. \ref{fig:bcx_rationalization}.
 \begin{figure}[htbp] 
@@ -338,31 +437,27 @@ Replacing the potential hydrogen bond donor Q127 with a non-hydrogen bonding sub
 Furthermore, as illustrated in Fig. \ref{fig:bcx_mechanism}, the transition state involves a partially positive charge on C$_1$ of the substrate.
 Negative charges on side chains (such as in W9D/E) could act as stabilizers of this negative charge and increase catalytic activity in doing so, \textit{i.e.} by stabilization of the transition state.
 Similaryl, when ionized, N35E could act in stabilizing C$_1$ but when in neutral protonation state, it could be acting as a hydrogen bond donor to the catalytically active E172.
-This rationalization of N35 mutations would be related to a recently proposed \textit{reverse protonation} mechanism\cite{joshi2000hydrogen}, which still is the subject of ongoing research.
-
-\newpage
-\subsection{Further Screening Applications}
-\textbf{The cocaine hydrolase guys}\\
-Make a cocaine hydrolase better\cite{gao2006computational}.\\
-\textbf{Biofuel production}\\
-The bottle neck in biofuel preparation from biobased materials is hydrolysis of cellulosic materials\textcolor{red}{[REFS?]}.
-Development of improved catalysts clearly could boost this field and has immediate impact on company performance.\\
-\textbf{Organic synthesis}\\
-Gotor et al.
+This rationalization of N35 mutations would be related to a recently proposed \textit{reverse protonation} mechanism\cite{joshi2000hydrogen}, which still is the subject of ongoing research.\\
+\textcolor{red}{[Further discussion of mutants.]}
+Contrary to the results from the CALB study, we identified numerous mutants with barriers which are considerably lower than the WT barrier.
+This fact might be attributed to significantly promoted catalysis by a better fitting of the substrate in the active site.
+%
+%\newpage
+%\subsection{Further Screening Applications}
+%\textbf{The cocaine hydrolase guys}\\
+%Make a cocaine hydrolase better\cite{gao2006computational}.\\
+%\textbf{Biofuel production}\\
+%The bottle neck in biofuel preparation from biobased materials is hydrolysis of cellulosic materials\textcolor{red}{[REFS?]}.
+%Development of improved catalysts clearly could boost this field and has immediate impact on company performance.\\
+%\textbf{Organic synthesis}\\
+%Gotor et al.
 % *************************************************************************
 
 
 % *************************************************************************
 % *************************************************************************
 \section{Conclusions}\label{sec:conclusions}
-
-\subsection{Advantages/Disadvantages}
-\begin{itemize}
-\item Bond formation/breaking can be modeled
-\item Large systems might require constraints to reach convergence
-\item Calculation times depend strongly on model chemistry used
-\item Not yet as established and convenient to use like e.g. docking software
-\end{itemize}
-
-\subsection{Required Future Development Actions}
-Experimental catalytic data ($k_\text{cat}$) of many mutants to validate against.
+The three most significant findings are that firstly, using linear scaling methods and a number of customized software packages it is possible to carry out large scale computational enzyme activity screening studies.
+Secondly, single mutant data is not enough to predict combination mutant activities because the activity modulating effects of the point mutations behave non-linearly when in combination with other mutations.
+And lastly, using such a screening approach allows not only to identify mutants for further characterization by higher level methods or experimental verification, but also to formulate hypothesis on how the various mutations actually contribute to increased catalysis.
+These findings can then be further exploited in future enzyme engineering efforts.

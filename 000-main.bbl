@@ -1,4 +1,4 @@
-\begin{thebibliography}{22}
+\begin{thebibliography}{33}
 \newcommand{\enquote}[1]{#1}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -8,9 +8,27 @@
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
 
+\bibitem[{Agresti \emph{et~al.}(2010)Agresti, Antipov, Abate, Ahn, Rowat,
+  Baret, Marquez, Klibanov, Griffiths and Weitz}]{agresti2010ultrahigh}
+Agresti, J.~J., Antipov, E., Abate, A.~R., Ahn, K., Rowat, A.~C., Baret, J.-C.,
+  Marquez, M., Klibanov, A.~M., Griffiths, A.~D. and Weitz, D.~A. (2010).
+  \enquote{Ultrahigh-throughput screening in drop-based microfluidics for
+  directed evolution,} \emph{Proceedings of the National Academy of Sciences}
+  \textbf{107}, 9, pp. 4004--4009.
+
+\bibitem[{Bajpai(1999)}]{bajpai1999application}
+Bajpai, P. (1999). \enquote{Application of enzymes in the pulp and paper
+  industry,} \emph{Biotechnology Progress} \textbf{15}, 2, pp. 147--157.
+
 \bibitem[{Beilen and Li(2002)}]{beilen2002enzyme}
 Beilen, J. and Li, Z. (2002). \enquote{Enzyme technology: an overview,}
   \emph{Current Opinion in Biotechnology} \textbf{13}, 4, pp. 338--344.
+
+\bibitem[{Bornscheuer and Kazlauskas(2004)}]{bornscheuer2004catalytic}
+Bornscheuer, U.~T. and Kazlauskas, R.~J. (2004). \enquote{Catalytic promiscuity
+  in biocatalysis: using old enzymes to form new bonds and follow new
+  pathways,} \emph{Angewandte Chemie International Edition} \textbf{43}, 45,
+  pp. 6032--6040.
 
 \bibitem[{Buch \emph{et~al.}(2011)Buch, Giorgino and
   De~Fabritiis}]{buch2011complete}
@@ -18,6 +36,19 @@ Buch, I., Giorgino, T. and De~Fabritiis, G. (2011). \enquote{Complete
   reconstruction of an enzyme-inhibitor binding process by molecular dynamics
   simulations,} \emph{Proceedings of the National Academy of Sciences}
   \textbf{108}, 25, pp. 10184--10189.
+
+\bibitem[{Buchert \emph{et~al.}(1994)Buchert, Tenkanen, Kantelinen and
+  Viikari}]{buchert1994application}
+Buchert, J., Tenkanen, M., Kantelinen, A. and Viikari, L. (1994).
+  \enquote{Application of xylanases in the pulp and paper industry,}
+  \emph{Bioresource technology} \textbf{50}, 1, pp. 65--72.
+
+\bibitem[{Chaput \emph{et~al.}(2012)Chaput, Sanejouand, Balloumi, Tran and
+  Graber}]{chaput2012contribution}
+Chaput, L., Sanejouand, Y.-H., Balloumi, A., Tran, V. and Graber, M. (2012).
+  \enquote{Contribution of both catalytic constant and michaelis constant to
+  calb enantioselectivity: Use of fep calculations for prediction studies,}
+  \emph{Journal of Molecular Catalysis B: Enzymatic} \textbf{76}, pp. 29--36.
 
 \bibitem[{Claeyssens \emph{et~al.}(2006)Claeyssens, Harvey, Manby, Mata,
   Mulholland, Ranaghan, Sch{\"u}tz, Thiel, Thiel and
@@ -34,6 +65,12 @@ Gao, D., Cho, H., Yang, W., Pan, Y., Yang, G., Tai, H.-H. and Zhan, C.-G.
   for accelerating cocaine hydrolysis based on the transition-state
   simulation,} \emph{Angewandte Chemie International Edition} \textbf{45}, 4,
   pp. 653--657.
+
+\bibitem[{Gayot \emph{et~al.}(2003)Gayot, Santarelli and
+  Coulon}]{gayot2003modification}
+Gayot, S., Santarelli, X. and Coulon, D. (2003). \enquote{Modification of
+  flavonoid using lipase in non-conventional media: effect of the water
+  content,} \emph{Journal of biotechnology} \textbf{101}, 1, pp. 29--36.
 
 \bibitem[{Gotor-Fern{\'a}ndez \emph{et~al.}(2006)Gotor-Fern{\'a}ndez, Busto and
   Gotor}]{gotor2006candida}
@@ -64,6 +101,10 @@ Hediger, M.~R., Steinmann, C., De~Vico, L. and Jensen, J.~H.
   screening of reaction barriers in enzymes: searching for bacillus circulans
   xylanase mutants with greater activity towards a synthetic substrate,}
   \emph{PeerJ} \textbf{1}, p. e111.
+
+\bibitem[{Hedstrom \emph{et~al.}(2002)}]{hedstrom2002serine}
+Hedstrom, L. \emph{et~al.} (2002). \enquote{Serine protease mechanism and
+  specificity,} \emph{Chemical reviews} \textbf{102}, 12, pp. 4501--4524.
 
 \bibitem[{Himo(2006)}]{himo2006quantum}
 Himo, F. (2006). \enquote{Quantum chemical modeling of enzyme active sites and
@@ -121,6 +162,22 @@ Meyer, H.-P., Eichhorn, E., Hanlon, S., L{\"u}tz, S., Sch{\"u}rmann, M.,
   industrial biocatalysis consortium (sibc),} \emph{Catalysis Science \&
   Technology} \textbf{3}, 1, pp. 29--40.
 
+\bibitem[{Naik \emph{et~al.}(2010)Naik, Basu, Saikia, Madan, Paul, Chaterjee,
+  Brask and Svendsen}]{naik2010lipases}
+Naik, S., Basu, A., Saikia, R., Madan, B., Paul, P., Chaterjee, R., Brask, J.
+  and Svendsen, A. (2010). \enquote{{Lipases for use in industrial
+  biocatalysis: Specificity of selected structural groups of lipases},}
+  \emph{Journal of Molecular Catalysis B: Enzymatic} \textbf{65}, 1-4, pp.
+  18--23.
+
+\bibitem[{Nakagawa \emph{et~al.}(2007)Nakagawa, Hasegawa, Hiratake and
+  Sakata}]{nakagawa2007engineering}
+Nakagawa, Y., Hasegawa, A., Hiratake, J. and Sakata, K. (2007).
+  \enquote{{Engineering of Pseudomonas aeruginosa lipase by directed evolution
+  for enhanced amidase activity: mechanistic implication for amide hydrolysis
+  by serine hydrolases},} \emph{Protein Engineering Design and Selection}
+  \textbf{20}, 7, pp. 339--346.
+
 \bibitem[{Rathore \emph{et~al.}(2013)Rathore, Sumakanth, Reddy, Reddanna, Rao,
   Erion and Reddy}]{rathore2013advances}
 Rathore, R., Sumakanth, M., Reddy, M.~S., Reddanna, P., Rao, A.~A., Erion,
@@ -149,6 +206,22 @@ Svedendahl, M., Carlqvist, P., Branneby, C., Allnér, O., Frise, A., Hult, K.,
   antarctica lipase b studied by experiment and theory,} \emph{ChemBioChem}
   \textbf{9}, 15, pp. 2443--2451, \doi{10.1002/cbic.200800318},
   \urlprefix\url{http://dx.doi.org/10.1002/cbic.200800318}.
+
+\bibitem[{Uppenberg \emph{et~al.}(1994)Uppenberg, Hansen, Patkar and
+  Jones}]{uppenberg1994sequence}
+Uppenberg, J., Hansen, M.~T., Patkar, S. and Jones, T.~A. (1994). \enquote{The
+  sequence, crystal structure determination and refinement of two crystal forms
+  of lipase b from candida antarctica,} \emph{Structure} \textbf{2}, 4, pp.
+  293--308.
+
+\bibitem[{Uppenberg \emph{et~al.}(1995)Uppenberg, Oehrner, Norin, Hult,
+  Kleywegt, Patkar, Waagen, Anthonsen and
+  Jones}]{uppenberg1995crystallographic}
+Uppenberg, J., Oehrner, N., Norin, M., Hult, K., Kleywegt, G., Patkar, S.,
+  Waagen, V., Anthonsen, T. and Jones, T. (1995). \enquote{{Crystallographic
+  and molecular-modeling studies of lipase B from Candida antarctica reveal a
+  stereospecificity pocket for secondary alcohols},} \emph{Biochemistry}
+  \textbf{34}, 51, pp. 16838--16851.
 
 \bibitem[{Zhou and Caflisch(2010)}]{zhou2010high}
 Zhou, T. and Caflisch, A. (2010). \enquote{{High-Throughput Virtual Screening
