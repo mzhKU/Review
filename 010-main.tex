@@ -210,10 +210,10 @@ Using CALB as a test case, we develop an efficient modeling protocol, verify the
 The reaction studied is the hydrolysis of $N$-benzyl-2-chloroacetamide.
 CALB has been highly characterized over the years such that its structure, physical properties and expression systems are well documented\cite{uppenberg1994sequence, uppenberg1995crystallographic}.
 The enzyme is a highly established catalyst with applications in organic synthesis, formulation technology\cite{gayot2003modification} and in kinetic resolution of racemic mixtures\cite{gotor2006candida, naik2010lipases, chaput2012contribution}.
-Furthermore, since the enzyme is known for its reactive promiscuity\cite{bornscheuer2004catalytic, CBIC:CBIC200800318}, it provides an ideal development platform for applications for which existing biocatalysts are of restricted efficiency.
+Furthermore, since the enzyme is known for its reactive promiscuity\cite{bornscheuer2004catalytic, CBIC:CBIC200800318}, it provides an ideal development platform for applications for which existing biocatalysts are only of limited efficiency.
 One such application is the hydrolysis of amide bond containing lipophilic compounds.
 While in principle amide bonds can be cleaved by proteases or peptidases, these enzymes are found to be less active towards hydrophobic substrates such as amide containing lipids\cite{nakagawa2007engineering}.
-Therefore, engineering CALB activity towards ${\text{CO}-\text{NH}}$ bond containing hydrophobic substrates would greatly expand its applicability and provide a new tool to the toolbox of chemical biotechnology.\\
+Therefore, engineering CALB activity towards ${\text{CO}-\text{NH}}$ bond containing hydrophobic substrates would greatly expand its applicability.\\
 \textbf{Structure and Mechanism.}
 Briefly, the active site in CALB consists of a catalytic triad (S105, D189 and H224) and an associated oxyanion hole.
 The mechanism is understood to follow the generally accepted mechanism of serine protease active sites\cite{hedstrom2002serine}, Fig. \ref{fig:calb-mechanism}.
@@ -227,21 +227,20 @@ In this work, R$_1$: -CH$_2$-Cl, R$_2$: -CH$_2$-C$_5$H$_6$\cite{hediger2013silic
 \end{figure}
 The rate determining step is believed to be the nucleophilic attack by O$^\gamma$ of S105 on the carbonyl carbon C$^{20}$ of the substrate.\\
 \textbf{Scale up, Experimental Verification and Calibration.}
-After establishing a proof-of-concept of the screening approach using a limited set of three mutants\cite{10.1371/journal.pone.0049849}, the method was scaled up to screen a set of 386 mutants of the CALB active site\cite{hediger2013silico}.
-This set consisted of single- to eight-fold mutants and the activity of 22 mutants of the set was measured experimentally.\\
-The method was calibrated in terms of qualitative prediction rate, \textit{i.e.} how likely can the method predict if a mutant will have higher or lower activity than the wild type.
-This calibration requires to note a couple of issues which are discussed in the following.
+After establishing a working proof-of-concept of the screening approach using a limited set of three mutants\cite{10.1371/journal.pone.0049849}, the method was scaled up to screen a set of 386 mutants of the CALB active site\cite{hediger2013silico}.
+This set consisted of single- to eight-fold mutants and of these, the activity of 22 mutants was measured experimentally.\\
+The accuracy of the method was calibrated in terms of qualitative predictivity, \textit{i.e.} how likely can the method predict if a mutant will have higher or lower activity than the wild type.
+For this calibration, the following issues need to be addressed.
 In the experiments, the activity relative to the WT, in principle, ranges from zero to infinity.
-In the calculations on the other hand, the activity of a mutant is determined by the difference between the mutant reaction barrier and the wild type barrier.
-Even for a very active mutant, the reaction barrier is not expected to be zero and so in this approach, since lower barriers are related to higher activities, the amount by which a mutant can be more active than the wild type is in principle limited.
+In the calculations on the other hand, the activity of a mutant is determined by the difference between the mutant reaction barrier and the wild type barrier\footnote{If a mutant has a lower reaction barrier than the WT, it is understood to have higher activity.}.
+However, even for a very active mutant, the reaction barrier is not expected to be zero and so in this approach, since lower barriers are related to higher activities, the amount by which a mutant can be more active than the wild type is in principle limited.
 Conversely, since the reaction barrier of a mutant can in principle be arbitrarily high, the amount by which a mutant could be less active than the wild type might be infinite.
-A direct quantitative relationship between reaction barrier differences and relative experimental activities is therefore not very meaningful, the value of a computational screening study in a production environment is to indicate which mutants should be considered for further study, and not so much to quantify their activity.
-Instead, only qualitative relative activities (higher or lower than WT) are determined, both for the experimental and calculated results, and used for the calibration of the predictivity.\\
+Establishing a direct quantitative relationship between differences in reaction barrier heights and relative experimental activities is therefore not very meaningful.
+Instead, it is more meaningful to only qualitatively compare activities, \textit{i.e.} if a mutant has higher or lower activity than the WT (both experimentally and calculated), and use these results for determining the predictivity.\\
 To cluster the results into increased/decreased activities it is therefore necessary to decide above/below which activity a mutant is considered being part of either the higher-activity or lower-activity clusters.
 Considering the relatively narrow spread of experimental activities\footnote{The experimental improvement factors range from 0 to roughly 11 times wild type activity.}, mutants with $\geq1.2$ times the wild type activity are considered improving while mutants with $<0.8$ times the wild type activity are considered degrading (mutants inbetween are considered as neither improving nor degrading)\cite{hediger2013silico}.
 The computational results are clustered in a similar way.
 A cutoff value for the calculated reaction barriers is introduced \textit{below} which the mutant is considered improving and above which the mutant is considered degrading.
-Subsequently, out of the mutants predicted to have higher activity, a set containg as many mutants as can be further characterized is selected and suggested for further study, either computationally or experimentally.
 It is found that at a specific cutoff value (12.5 kcal/mol), the method qualitatively predicts activity of 15 out of 22 mutants correctly, Fig. \ref{fig:diag-predictivity}.
 \begin{figure}[htbp] 
 \includegraphics[width=1.00\linewidth]{diag-predictivity-truncated.pdf}
@@ -252,29 +251,28 @@ Agreement between predicted and experimental qualitative activity relative to wi
 \end{figure}
 Noteworthy, mutants with both higher as well as lower activity are correctly predicted.
 Importantly, the advantage of clustering the mutants in this way is not apparent maximum agreement with the experimental data in the first place, but much rather to provide a lower limit for the predictivity under the given set of approximations.
-It needs to be kept in mind that in such a computational enzyme activity assay, it is unlikely to have calibration data available since it is performed \textit{before} wet-lab experiments are carried out.
-We find this approach furthermore justified since at the initial outset of a screening study, the focus is mostly on narrowing down possible candidates from a large library, \textit{i.e.} the focus is on obtaining qualitative conclusions rather than quantitative results\cite{agresti2010ultrahigh}.\\
+It is important to keep in mind that it will be unlikely to have calibration data available in a computational enzyme activity assay, since idealy it is performed \textit{before} wet-lab experiments are started.
+Therefore, such an approach is further justified since at the initial outset of a screening study, the focus is mostly on narrowing down possible candidates from a large library, \textit{i.e. } the focus is on obtaining qualitative conclusions rather than quantitative results\cite{agresti2010ultrahigh}-- this is the true value of computational screening.
+Following such a screening analysis, out of the mutants predicted to have higher activity, a set consisting of as many mutants as can be further characterized is selected and suggested for further study, either computationally or experimentally.\\
 \textbf{Screening Results and Discussion of Mutants.}
-In the set of 386 screened mutants, we identified only three mutants with a barrier lower than the wild type (a double, a triple and a four-fold mutant).
-Analysis of the screening results was further focused on two residues: W104 and I189.
+Identification of mutants with reaction barriers significantly lower than the wild type is found to be difficult.
+In the set of 386 screened mutants, we identified only three mutants with a barrier lower than the wild type (a double, a triple and a four-fold mutant) while a large proportion of the mutants has barriers in the range from 12 to 14 kcal/mol, Fig. \ref{fig:reaction-barriers}.
+\begin{figure}[htbp] 
+\textbf{A}
+\includegraphics[width=0.95\linewidth]{barriers.pdf}
+\caption{
+Reaction barriers of CALB mutants.
+}
+\label{fig:reaction-barriers}
+\end{figure}
+As seen, a large number of mutants need to be screened to identify the best few candidates for further study.
+This conclusion is likely even more true in studies where the enzyme is either intrinsically of only very little activity towards a specific substrate (``it does not work'') or where the enzyme already has reached very high activity towards a specific substrate\cite{agresti2010ultrahigh}.\\
+Further analysis of the screening results was focused on two residues: W104 and I189.
 These are selected because mutations of these positions can provide more space for the substrate which is hypothesized to lead to increased activity, Fig. \ref{fig:calb-views}.
 \begin{figure}[htbp] 
-%\centering
-%\begin{minipage}{0.42\linewidth}
 \textbf{A}
-%\end{minipage}
-%\begin{minipage}{0.42\linewidth}
-%\textbf{B}
-%\end{minipage}
-%\begin{minipage}{0.49\linewidth}
-%\includegraphics[width=0.95\linewidth]{calb-total-view.png}
-%\end{minipage}
-%\begin{minipage}{0.49\linewidth}
 \includegraphics[width=0.95\linewidth]{calb-active-site.png}
-%\end{minipage}
 \caption{
-%\textbf{A}: CALB total view, active site visible in the lower part of the panel.
-%\textbf{B}: Active site, some residues omitted for clarity.
 CALB active site, some residues omitted for clarity.
 SUB labels the substrate.
 }
@@ -282,26 +280,34 @@ SUB labels the substrate.
 \end{figure}
 As seen, W104 and I189 are in direct proximity to the substrate.
 From the single mutant data, it is found that the mutants W104Q or W104Y have barriers just around the cutoff value of 12.5 kcal/mol.
-However, when in combination with other mutations, such as G39A-W104F-A141Q-I189A (8.3 kcal/mol) or G39A-T103G-W104Y-A141N (9.8 kcal/mol), these mutations are among the most active ones found and it is clear that arriving at such combinations by purely rational considerations is virtually impossible.\\
-Analysis of mutations of I189, Fig. \ref{fig:i189g} provides additional intersting insight.
+However, when in combination with other mutations, such as G39A-W104F-A141Q-I189A (8.3 kcal/mol) or G39A-T103G-W104Y-A141N (9.8 kcal/mol), these mutations are among the most active ones found.
+It is noted that it would be very difficult to arrive at these combinations by pure rational considerations of the active site.\\
+Analysis of mutations of I189, Fig. \ref{fig:i189g}, provides additional intersting insight into the non-linear effects of various mutations.
 \begin{figure}[htbp] 
 \includegraphics[width=0.95\linewidth]{011-diag_eval_scre_setL-i189.pdf}
 \caption{
-I189G screening.
+Screening of position 189.
+Each data point corresponds to a mutant with calculated reaction barrier on the $x$-axis and number of mutations indicated by the value of the $y$-axis.
+The data point symbols indicate either of the point mutations I189A/G/H/N or Y.
+Data points labeled as ``Other'' do not contain a mutation of I189.
+\textit{E.g.} the far left purple square on row 3 indicates a mutant containing I189Y and two other mutations which are not indicated in the graph.
 }
 \label{fig:i189g}
 \end{figure}
-Five different mutations are screened but the analysis is focused on I189G.
-As a single mutant, I189G is found to be completely unproductive (18.9 kcal/mol), in a double mutant the barrier is reduced in one case to around 17.5 kcal/mol and in G39A-A141Q-I189G-L278A, the I189G mutation is among the top three mutants found (6.3 kcal/mol).
+Five different mutations of this position are screened but to illustrate the point, the focus is on I189G.
+As a single mutant, I189G is found to be completely unproductive (18.9 kcal/mol, far right red triangle in the row ``Mutation Order = 1'' of Fig. \ref{fig:i189g}).
+In combination with another mutation (not shown), the barrier is reduced in one case to around 17.5 kcal/mol and in G39A-A141Q-I189G-L278A, the I189G mutation is among the top three mutants found (6.3 kcal/mol).
 Conversely, the mutant G39A-A141Q-L278A has a moderately low barrier (10.9 kcal/mol).
-These results emphasize the fact that the activity modulating effect of specific point mutations behaves strongly non-linearly and should be kept in mind when considering which mutations to include in further studies.
+These results emphasize the fact that the activity modulating effect of specific point mutations can behave strongly non-linearly and non-additive and should be kept in mind when considering which mutations to include in further studies.
 Put differently, these findings illustrate that it is difficult to predict the activity of combination mutants based on single mutant data alone.
-Since, apparently, single mutant data is not sufficient to predict combination mutant activity, screening a wide library of mutants should form an essential initial part of any enzyme engineering project.
-Furthermore, it is immediately clear that computational activity screening, thus, can provide major advantage in cost and material use reduction to the overall enzyme engineering efforts.\\
+Furthermore, since single mutant data is apparently not sufficient to predict combination mutant activity, screening a wide library of mutants should form an essential initial part of any enzyme engineering project.
+It thus becomes clear that computational activity screening can provide a major contribution to cost and material use reduction of the total enzyme engineering efforts.\\
 \textbf{Outlook.} A number of points remained unaddressed in this study.
-Among these is the fact that not the complete enzyme structure was used in the calculations, instead only amino acids within 8$\AA$ of the substrate have been included in the model.
-The backbone sequence is therefore interrupted, introducing ambiguity in how to orient hydrogen atoms used to complete the valences at the interruption points.
-Secondly, the set of positions screened was directed by prior knowledge, instead of an unbias systematic screening and lastly, it remained to be shown that the presented approach was also useful for mechanistically different reactions in different enzymes.
+Among these is the fact, due to reasons of exceeding computational effort, that not the complete enzyme structure was used in the calculations, instead only amino acids within 8\AA \mbox{ of } the substrate have been included in the model.
+The backbone sequence is therefore interrupted, introducing ambiguity in how to orient hydrogen atoms used to complete the valences at the interruption sites and possibly allowing for non-realistic structural rearrangements during the geometry optimizations of the structure.
+Secondly, the positions which were mutated were selected, in part, based on prior knowledge of the enzyme, instead of systematically screening all active site positions.
+Lastly, it remained to be shown that the presented approach could also be adapted to mechanistically different reactions of other enzymes.
+We address these points in the next study.
 %
 % Weak points of the study to be addressed in BCX project:
 %\begin{itemize}
@@ -319,8 +325,8 @@ Secondly, the set of positions screened was directed by prior knowledge, instead
 
 \subsection{Engineering \textit{Bacillus circulans} xylanase}
 The xylanase of \textit{Bacillus circulans} is applied in paper production\cite{bajpai1999application, buchert1994application}.
-Fields related to degradation of plant materials are \textit{e.g.} biofuel production.\\
-In order to address the points summarized above and to show general applicability of the approach outlined for CALB, the xylanase of \textit{Bacillus circulans} (BCX) is engineered to be catalytically active towards an artifical substrate ($ortho$-nitrophenol-$\beta$-xylobioside), Fig. \ref{fig:substrate}.
+Other fields related to degradation of plant materials are \textit{e.g.} biofuel production\textcolor{red}{[REFS?]}.\\
+In order to address the points summarized at the end of the previous section, the xylanase of \textit{Bacillus circulans} (BCX) is engineered to be catalytically active towards an artifical substrate ($ortho$-nitrophenol-$\beta$-xylobioside), Fig. \ref{fig:substrate}.
 \begin{figure}[htbp] 
 \centering
 \includegraphics[width=0.85\linewidth]{substrate.pdf}
@@ -329,6 +335,7 @@ $ortho$-nitrophenol-$\beta$-xylobioside substrate used in BCX study consisting o
 }
 \label{fig:substrate}
 \end{figure}
+This enzyme is also well characterized, a number of PDB structures are available and it is subject to ongoing experimental research\cite{ludwiczek2013strategies}.
 In this study, the mechanism was taken from the literature as reported previously\cite{joshi2000hydrogen,joshi2001dissecting}.
 In the following, we outline the work reported in the study and illustrate the sequence of simulation and modeling steps.\\
 \textbf{WT reaction barrier modeling.}
