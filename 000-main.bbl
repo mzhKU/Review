@@ -1,4 +1,4 @@
-\begin{thebibliography}{33}
+\begin{thebibliography}{46}
 \newcommand{\enquote}[1]{#1}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -58,13 +58,16 @@ Claeyssens, F., Harvey, J., Manby, F., Mata, R., Mulholland, A., Ranaghan, K.,
   \enquote{{High-Accuracy Computation of Reaction Barriers in Enzymes},}
   \emph{Angewandte Chemie} \textbf{118}, 41, pp. 7010--7013.
 
-\bibitem[{Gao \emph{et~al.}(2006)Gao, Cho, Yang, Pan, Yang, Tai and
-  Zhan}]{gao2006computational}
-Gao, D., Cho, H., Yang, W., Pan, Y., Yang, G., Tai, H.-H. and Zhan, C.-G.
-  (2006). \enquote{Computational design of a human butyrylcholinesterase mutant
-  for accelerating cocaine hydrolysis based on the transition-state
-  simulation,} \emph{Angewandte Chemie International Edition} \textbf{45}, 4,
-  pp. 653--657.
+\bibitem[{Cramer(2013)}]{cramer2013essentials}
+Cramer, C.~J. (2013). \emph{Essentials of computational chemistry: theories and
+  models} (John Wiley \& Sons).
+
+\bibitem[{Gao \emph{et~al.}(2013)Gao, Chundawat, Sethi, Balan, Gnanakaran and
+  Dale}]{gao2013increased}
+Gao, D., Chundawat, S.~P., Sethi, A., Balan, V., Gnanakaran, S. and Dale, B.~E.
+  (2013). \enquote{Increased enzyme binding to substrate is not necessary for
+  more efficient cellulose hydrolysis,} \emph{Proceedings of the National
+  Academy of Sciences} \textbf{110}, 27, pp. 10922--10927.
 
 \bibitem[{Gayot \emph{et~al.}(2003)Gayot, Santarelli and
   Coulon}]{gayot2003modification}
@@ -111,6 +114,10 @@ Himo, F. (2006). \enquote{Quantum chemical modeling of enzyme active sites and
   reaction mechanisms,} \emph{Theoretical Chemistry Accounts: Theory,
   Computation, and Modeling (Theoretica Chimica Acta)} \textbf{116}, 1, pp.
   232--240.
+
+\bibitem[{Jensen(2007)}]{jensen2007introduction}
+Jensen, F. (2007). \emph{Introduction to computational chemistry} (John Wiley
+  \& Sons).
 
 \bibitem[{Joshi \emph{et~al.}(2001)Joshi, Sidhu, Nielsen, Brayer, Withers and
   McIntosh}]{joshi2001dissecting}
@@ -178,12 +185,48 @@ Nakagawa, Y., Hasegawa, A., Hiratake, J. and Sakata, K. (2007).
   by serine hydrolases},} \emph{Protein Engineering Design and Selection}
   \textbf{20}, 7, pp. 339--346.
 
+\bibitem[{Noodleman \emph{et~al.}(2004)Noodleman, Lovell, Han, Li and
+  Himo}]{noodleman2004quantum}
+Noodleman, L., Lovell, T., Han, W., Li, J. and Himo, F. (2004).
+  \enquote{{Quantum chemical studies of intermediates and reaction pathways in
+  selected enzymes and catalytic synthetic systems},} \emph{Chemical reviews}
+  \textbf{104}, 2, pp. 459--508.
+
+\bibitem[{Ragauskas \emph{et~al.}(2006)Ragauskas, Williams, Davison, Britovsek,
+  Cairney, Eckert, Frederick, Hallett, Leak, Liotta
+  \emph{et~al.}}]{ragauskas2006path}
+Ragauskas, A.~J., Williams, C.~K., Davison, B.~H., Britovsek, G., Cairney, J.,
+  Eckert, C.~A., Frederick, W.~J., Hallett, J.~P., Leak, D.~J., Liotta, C.~L.
+  \emph{et~al.} (2006). \enquote{The path forward for biofuels and
+  biomaterials,} \emph{science} \textbf{311}, 5760, pp. 484--489.
+
 \bibitem[{Rathore \emph{et~al.}(2013)Rathore, Sumakanth, Reddy, Reddanna, Rao,
   Erion and Reddy}]{rathore2013advances}
 Rathore, R., Sumakanth, M., Reddy, M.~S., Reddanna, P., Rao, A.~A., Erion,
   M.~D. and Reddy, M. (2013). \enquote{Advances in binding free energies
   calculations: Qm/mm-based free energy perturbation method for drug design,}
   \emph{Current pharmaceutical design} \textbf{19}, 26, pp. 4674--4686.
+
+\bibitem[{Rez{\'a}c \emph{et~al.}(2009)Rez{\'a}c, Fanfrlik, Salahub and
+  Hobza}]{rezac2009semiempirical}
+Rez{\'a}c, J., Fanfrlik, J., Salahub, D. and Hobza, P. (2009).
+  \enquote{Semiempirical quantum chemical pm6 method augmented by dispersion
+  and h-bonding correction terms reliably describes various types of
+  noncovalent complexes,} \emph{Journal of Chemical Theory and Computation}
+  \textbf{5}, 7, pp. 1749--1760.
+
+\bibitem[{Rez{\'a}c and Hobza(2011)}]{vrezavc2011halogen}
+Rez{\'a}c, J. and Hobza, P. (2011). \enquote{A halogen-bonding correction for
+  the semiempirical pm6 method,} \emph{Chemical Physics Letters} \textbf{506},
+  4, pp. 286--289.
+
+\bibitem[{Schenker \emph{et~al.}(2011)Schenker, Schneider, Tsogoeva and
+  Clark}]{schenker2011assessment}
+Schenker, S., Schneider, C., Tsogoeva, S. and Clark, T. (2011).
+  \enquote{Assessment of popular dft and semiempirical molecular orbital
+  techniques for calculating relative transition state energies and kinetic
+  product distributions in enantioselective organocatalytic reactions,}
+  \emph{Journal of Chemical Theory and Computation} .
 
 \bibitem[{Schmid \emph{et~al.}(2002)Schmid, Hollmann, Park and
   B{\"u}hler}]{schmid2002use}
@@ -198,6 +241,23 @@ Schmid, A., Hollmann, F., Park, J.~B. and B{\"u}hler, B. (2002). \enquote{The
 Siegbahn, P.~E. and Himo, F. (2009). \enquote{Recent developments of the
   quantum chemical cluster approach for modeling enzyme reactions,} \emph{JBIC
   Journal of Biological Inorganic Chemistry} \textbf{14}, 5, pp. 643--651.
+
+\bibitem[{Stewart(1996)}]{stewart1996application}
+Stewart, J. (1996). \enquote{{Application of localized molecular orbitals to
+  the solution of semiempirical self-consistent field equations},}
+  \emph{International Journal of Quantum Chemistry} \textbf{58}, 2, pp.
+  133--146.
+
+\bibitem[{Stewart(2007)}]{stewart2007optimization}
+Stewart, J. (2007). \enquote{{Optimization of parameters for semiempirical
+  methods V: Modification of NDDO approximations and application to 70
+  elements},} \emph{Journal of Molecular Modeling} \textbf{13}, 12, pp.
+  1173--1213.
+
+\bibitem[{Stewart(2009)}]{stewart2009application}
+Stewart, J. (2009). \enquote{{Application of the PM6 method to modeling
+  proteins},} \emph{Journal of molecular modeling} \textbf{15}, 7, pp.
+  765--805.
 
 \bibitem[{Svedendahl \emph{et~al.}(2008)Svedendahl, Carlqvist, Branneby,
   Allnér, Frise, Hult, Berglund and Brinck}]{CBIC:CBIC200800318}
@@ -222,6 +282,21 @@ Uppenberg, J., Oehrner, N., Norin, M., Hult, K., Kleywegt, G., Patkar, S.,
   and molecular-modeling studies of lipase B from Candida antarctica reveal a
   stereospecificity pocket for secondary alcohols},} \emph{Biochemistry}
   \textbf{34}, 51, pp. 16838--16851.
+
+\bibitem[{Yeoman \emph{et~al.}(2010)Yeoman, Han, Dodd, Schroeder, Mackie and
+  Cann}]{yeoman2010thermostable}
+Yeoman, C.~J., Han, Y., Dodd, D., Schroeder, C.~M., Mackie, R.~I. and Cann,
+  I.~K. (2010). \enquote{Thermostable enzymes as biocatalysts in the biofuel
+  industry,} \emph{Advances in applied microbiology} \textbf{70}, pp. 1--55.
+
+\bibitem[{Young(2004)}]{young2004computational}
+Young, D. (2004). \emph{Computational chemistry: a practical guide for applying
+  techniques to real world problems} (John Wiley \& Sons).
+
+\bibitem[{Zhang(2011)}]{zhang2011vital}
+Zhang, Y.-H.~P. (2011). \enquote{What is vital (and not vital) to advance
+  economically-competitive biofuels production,} \emph{Process Biochemistry}
+  \textbf{46}, 11, pp. 2091--2110.
 
 \bibitem[{Zhou and Caflisch(2010)}]{zhou2010high}
 Zhou, T. and Caflisch, A. (2010). \enquote{{High-Throughput Virtual Screening
