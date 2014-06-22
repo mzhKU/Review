@@ -120,25 +120,27 @@ We will discuss application of the approach to the modeling of two enzymes: CALB
 \subsection{Calculation Engines}\label{sec:calculation_engines}
 The focus of this article is on the application of quantum chemistry for the screening of enzyme mutants.
 So instead of attempting to incompletely review modern computational chemistry methods, only a few selected facts relevant for the following are highlighted.
-A number of text books on the subject have been published\cite{young2004computational, jensen2007introduction, cramer2013essentials}.\\
+Details are found in text books on the subject\cite{young2004computational, jensen2007introduction, cramer2013essentials}.\\
 Most fundamentaly, computational descriptions of a molecular system are done using either (parametric) \textit{force fields} or \textit{ab initio} electronic structure methods.\footnote{\textit{Molecular mechanics}, \textit{empirical } or \textit{classical mechanics} are other expressions for force field methods.}
 Force field methods are useful in studying structural behavior of enzymes over a significant time period (approaching the millisecond scale) and can provide details about structural rearrangement of an enzyme.\\
 Chemical reactivity however is accompanied by changes in the electronic structure of the system which require quantum chemical methods to be described.
-For the sake of the argument, semi-empirical, density functional and \textit{ab initio} methods are understood to form the set of quantum chemical methods.\\
+For the sake of the argument, semi-empirical, density functional and \textit{ab initio} methods are all understood to form the set of quantum chemical methods.\\
 \textbf{Quantum Chemical Methods.}
-Since quantum chemical methods each provide their own description of the wave function (or electron density in density functional methods) and all properties, such as energy, are \textit{derived} from the wave function (or the electron density), it is essential to note that every method has \textit{its} own chemistry depending to the wave function (or density) it produces.
+Quantum chemical methods attempt at solving the Schr{\"o}dinger equation for the molecule, the solution of this equation will yield the wave function of the system.
+However, depending on the specifics of the quantum chemical method, the solutions are different.
+Now, since every quantum chemical method provides its own description of the wave function (or electron density in density functional methods) and all properties, such as energy or charge distribution, are \textit{derived} from the wave function (or the electron density), it is essential to note that every method has \textit{its} own chemistry depending to the wave function (or density) it produces.
 As a consequence, hydrogen bonding patterns of a structure can be different when optimized with two different quantum chemical methods.
 Therefore, it is good practice to verify the predictions of one quantum chemical method against, perhaps, higher-level methods, or to at least ensure that the obtained conclusions are consistent with the method against which results are compared.
 With regard to the modeling of enzymatic reactions, if a method can reproduce the generally accepted mechanism then there is a good chance that at least qualitatively reliable conclusions can be made using this method.\\
-For the discussion of the applications, the semi-empirical PM6 method\cite{stewart2007optimization, stewart2009application} together with the MOZYME technology\cite{stewart1996application} are most relevant.
+In the applications, the semi-empirical PM6 method\cite{stewart2007optimization, stewart2009application} was used together with the MOZYME technology\cite{stewart1996application}\footnote{\textit{Semi-empirical } essentially means that the calculation consists of a parametrized and unparametrized component which results in efficiency gains.}.
 In a comparative study, PM6 is found to provide results approaching density functional accuracy\cite{schenker2011assessment}.
 Furthermore, calculations on small active site models of the two enzymes allow to reproduce the generally accepted mechanisms.
-The MOZYME technology provides a method of localizing the molecular orbitals obtained during the self-consistent field calculation which results in computational demands scaling linearly with system size.
+The MOZYME technology allows to localize the molecular orbitals obtained during the self-consistent field calculation which results in computational demands scaling linearly with system size.
 Additionally, the implementation of the PM6 method is actively being developed further to take into account properties such as dispersion or solvation\cite{rezac2009semiempirical, vrezavc2011halogen}.
 In essence, these two technologies in combination therefore provide the accuracy and efficiency required for modeling of enzymatic reactivity in a screening assay.
 
 \subsection{Molecular Modeling}\label{sec:modeling}
-A variety of molecular modeling approaches has been presented, all suitable for different applications.
+A variety of molecular modeling approaches is available in the literature, all suitable for different applications.
 We briefly outline two of them and then introduce in more detail the approach used in the screening studies of the application section.\\
 \textbf{Cluster approach.}
 Among the most popular are the so called cluster models, where a larger or smaller part of the enzyme active site is extracted into a separate model and then all calculations are carried out on this smaller model.
@@ -148,65 +150,73 @@ This technique, in principle, can be used in enzyme activity screening studies, 
 Using a full model of the enzyme structure prevents such ambiguity, but raises a number of issues as well.
 Including the full enzyme structure in the calculation naturally increases the computational demands significantly.
 Thus when running calculations on a full enzyme structure, careful consideration of the the trade-off between accuracy and efficiency becomes very important.
-Calculations of full enzyme models also require to consider automated assignment of ionization states to amino acids.
-While a user can easily assign ionization states to a few dozen amino acids, such an approach becomes likely error prone in structures consisting of hundreds of amino acids.
-As was outlined above, semi-empirical methods in combination with linear scaling technologies, which are readily available in a number of programs (GAMESS, MOPAC and others), are computationally sufficiently efficient and allow for some degree of programmatic customization, which is of great relevance for later data analysis.\\
-We have have used such full enzyme models in two studies where new functionality has been introduced into an enzyme active site by quantum chemical methods\cite{10.1371/journal.pone.0049849,hediger2013silico,hediger2013computational}.\\
-In both studies, the basic procedure consists of preparing structures for the enzyme substrate complex (``ES'') and the first intermediate (CALB: ``TI''\footnote{Tetrahedral intermediate}, BCX: ``GE''\footnote{\label{foot:ge}Glycosyl enzyme}) and calculating the reaction barrier between these two pairs of structures, respectively.
-The reaction barrier is calculated by interpolating between the ES$_\text{CALB}$ and TI or ES$_\text{BCX}$ GE structures, \textit{i.e.} by preparing a set of 10 intermediate structures which approximate the structure of the system along the reaction coordinate.\footnote{In the literature, the terms \textit{interpolation}, \textit{linear transit scan}, \textit{reaction coordinate calculation} or \textit{adiabatic mapping} are frequently used to indicate the same kind of procedure.}
-By evaluating the energies for each interpolation frame for the two reactions ES$_\text{CALB}\rightarrow$TI or ES$_\text{BCX}\rightarrow$GE, it becomes possible to obtain an approximate potential energy surface of the reaction, Fig. \ref{fig:calb_reaction}.
-The quality of the results of this approach are strongly dependent on how careful the modeling of each of these structures is carried out.
-A frequent reason for meaningless results is significant structural rearrangement during the geometry optimization, requiring to interpolate between very different conformations of the two stationary points on each side of the reaction barrier.\\
-Finally, the activities of different variants of an enzyme are ordered by comparing the activation energy required for the rate determining step of the overall reaction -- low activation energies correspond to high anticipated activity of the variant.
-Implicitly this assumes high substrate concentration such that $k_\text{cat}$ becomes rate limiting, a reasonable assumption under industrial conditions.\\
-\textcolor{red}{\textbf{[Requirements.]}}
-The most basic requirements are that a structure representing a bound intermediate along the reaction pathway is available.
-Alternatively, a homology model could be used.
-Furthermore, ideally the mechanism for the rate determining step is established in the literature.
-In case no generally accepted mechanism is reported, a preceeding study could analyse kinetically competing mechanism alternatives.\\
-\begin{itemize}
-\item The structures of the enzyme in the relevant state of the reaction need to be available, ie. an enzyme-substrate complex (ES) and a transition state (TS) analog (usually an inhibited species)
-\item If the mechanism is not established, the reaction can usually follow various pathways -- these would need to be checked in order to find a best guess at the rate determining step
-\item Identification of the transition state is difficult and depends intimatly on the structure, optimizing two structures differing by 0.1 \AA in a particular bond length can result in identification or not identification of the TS
-\item \textcolor{red}{Focus on catalysis, assume binding is similar over mutant range\cite{ludwiczek2013strategies}- $K_\text{M}$s are similar for mutants}
-\end{itemize}
-\textcolor{red}{In the presented approach, large structural rearrangements can not be studied.}\\
-% Paragraph.
-\textcolor{red}{\textbf{[Aspects of model size and modeling.]}}
-It is frequently observed that specific pairs of mutants can not be accommodated together because of the size of the side chains.
-In order to facilitate the approach, these variants are discarded from the screen.
-Furthermore, side chain orientations can be oriented in various ways and are defaulted using some approach (local, empirical function based optimization in PyMOL).
-At the least, this removes ambiguity in the modeling step.
-Ionization states of side chains greatly complicate the screening and the best approach most likely is to consider different ionization states only at a later stage of the assay.\\
-\textcolor{red}{\textbf{[Interpolation/Linear transit/Adiabatic mapping.]}}
+One way of addressing this issue is by using so called hybrid method which combine a quantum chemical and a classical mechanics based calculation.
+The advantage of these methods is that they are capable of producing highly accurate results, the setup of such calculations is however still not as straightforward as is required for large scale screening approaches.
+An alternative is to describe the complete system using the same, albeit lower level of theory (\textit{i.e. } PM6) which reduces efforts to setup the calculation significantly.
+This is the approach of the applications described below.\\
+As was outlined above, semi-empirical methods in combination with linear scaling technologies, which are readily available in a number of programs (GAMESS, MOPAC and others), are sufficiently efficient and allow for some degree of programmatic customization, which is of great relevance for later data analysis.\\
+\textbf{Calculation of Reaction Barrier.}
+Irrespective of the method used, calculating the activation energy requires to estimate the difference between the transition state and the most stable state of the system before the transition state on the reaction coordinate.
+This is a non-trivial problem and no generally applicable methods exist to do this, solving this problem will therefore always at one point require direct input from the modeler.
+Furthermore, characterization and identification of a transition state is computationally very demanding operation and, especially in large systems, is likely to fail.
+A reasonable approach is therefore to approximate the transition state by linearly interpolating the structure along the reaction coordinate of the rate determining step of the total reaction.
+If carried out carefully, this approach can provide very good approximations to transition state.\\
+\textbf{Linear Interpolation.}
+In both applications outlined below, the basic procedure to obtain a reaction barrier consists of preparing structures for the enzyme substrate complex (``ES'') and the first intermediate (CALB: ``TI''\footnote{Tetrahedral intermediate}, BCX: ``GE''\footnote{\label{foot:ge}Glycosyl enzyme}) and calculating the reaction barrier between for the ES$_\text{CALB}$-TI and ES$_\text{BCX}$-GE pairs, respectively.
+For these two pairs, the reaction barrier is calculated by preparing a set of 10 intermediate structures which approximate the structure of the system along the reaction coordinate, Fig. \ref{fig:calb_reaction}A.\footnote{In the literature, the terms \textit{interpolation}, \textit{linear transit scan}, \textit{reaction coordinate calculation } or \textit{adiabatic mapping} are frequently used to indicate essentially the same kind of procedure.}
 \begin{figure}[htbp] 
 \centering
-\begin{minipage}{0.43\linewidth}
-\includegraphics[width=0.90\linewidth]{wt-ini.png}
+\begin{minipage}{0.49\linewidth}
+A
 \end{minipage}
-\begin{minipage}{0.55\linewidth}
-\includegraphics[width=1.00\linewidth]{calb-conv.pdf}
+\begin{minipage}{0.49\linewidth}
+B
+\end{minipage}
+\begin{minipage}{0.49\linewidth}
+\includegraphics[width=1.00\linewidth]{calb-interpolation-1.png}
+\end{minipage}
+\begin{minipage}{0.49\linewidth}
+\includegraphics[width=1.00\linewidth]{0000-wt.eps}
 \end{minipage}
 \caption{
-Intermediate structures along reaction coordinate of CALB reaction.
+\textbf{A:} Illustration of linear interpolation.
+It is visible how the substrate and the nucleophilic oxygen of S105 approach each other.
+Also visible is the proton transfer to H224 in the late interpolation frames and how the oxyanion hole (T42) follows the increasingly negative carbonyl oxygen of the substrate.
+\textbf{B:} Evaluation of the system energy for each interpolation frame results in an approximate reaction barrier (calculation done with PM6).
 }
 \label{fig:calb_reaction}
 \end{figure}
+As a side note, it is mentioned that extending this interpolation approach to the complete set of screened mutants requires some development effort and depends on the software used.\\
+By evaluating the energies for each interpolation frame for the two reactions ES$_\text{CALB}\rightarrow$TI or ES$_\text{BCX}\rightarrow$GE, an approximate potential energy surface of the reaction is obtained, Fig. \ref{fig:calb_reaction}B.
+The quality of the results of this approach are strongly dependent on how careful the modeling of each of these structures is carried out.
+Since the geometry of every interpolation frame is optimized individually, it is possible that adjecent interpolation frames optimize into significantly different local minima, this is a frequent reason for meaningless results.
+It is therefore advisable that the two end points of the interpolation are not to different in structure.\\
+After using the same approach to calculate activation energies of the mutants, low activation energies correspond to high anticipated activity of the variant and so candidates for further characterization can be identified.\\
+It is noted that in this approach, the focus is on the catalysis and it is assumed that binding of the substrate by different mutants is similar, an observation which is also made in experiments\cite{ludwiczek2013strategies}.\\
+\textbf{Requirements.}
+The most basic requirements are that a structure representing a bound intermediate along the reaction pathway is available.
+For the modeling it is advantageous to have a bound intermediate which can then be modified into the substrate, preserving its natural binding pose.
+Alternatively, a homology model could be used.
+Using a single model as the template for both the intermediate of the reaction, as well as the preceeding stationary point is another advantage because the structural differences between these structures will be small and will less likely lead to non-conclusive reaction barriers in the interpolation.
+Furthermore, ideally the mechanism for the rate determining step is established in the literature.
+In case no generally accepted mechanism is reported, a preceeding study in a small model structure could analyse kinetically competing mechanistic alternatives.\\
+\textbf{Preparation of Mutant Structures.}
+The structure of the mutants can be prepared with any kind of molecular modeling software, however it is advantageous if the software can be controlled programmatically.
+One important note is made.
+It is frequently observed that specific pairs of mutants can not be accommodated in the same model because the two new side chains would clash.
+In order to facilitate the approach, these variants are discarded from the screen.
+Furthermore, side chain orientations can be oriented in various ways and are defaulted using a crude local optimization procedure which is builtin into PYMOL.
+Ionization states of side chains greatly complicate the screening and the best approach most likely is to consider different ionization states only at a later stage of the assay.
 
-
-
-\subsection{Modeling Software}\label{sec:software}
-Explain available software: GAMESS, MOPAC\\
-Various engines are implemented in different calculation software.
-Methods on paper are of limited use if they can not be applied, therefore also available modeling software is a very important factor.\\
-Modeling software is available, PyMOL, Schr\"odinger, Chem?? (Walter Thiel, commercially) but everything is still very much custom work (especially the data analysis, programs output format is like from last century), this is probably the major reason preventing the use of QM as standard method in industry.
-Compare docking and MD methods have software which is designed towards user friendlyness and has become established in industry.
-GTKDynamo is an exceptionally good example for what it should look like, unfortunately only small community.\\
-Many studies claim that ``\textit{future developments are directed at further automating the presented approach}''.
-Obviously these remarks are directed at making the method industrially applicable by avoiding the requirement to carry out complicated setup and configuration steps\cite{rathore2013advances}.
-In reality, such future developments, to the great unfortune of the whole field, are rarely realized -- speculation on the reasons is beyond the scope of this article.
-Nevertheless, almost no publication fails to mention the potential applications in drug design.
-Computational considerations are only rarely taken into account but greatly help at putting the whole approach into perspective\cite{buch2011complete}.
+\subsection{Software}\label{sec:software}
+The largest part of the calculations in the applications below have been carried out with the MOPAC software\cite{stewart1990mopac}.
+This software is designed to be convenient to use and efficiently to setup.
+It offers various semi-empirical calculation engines and linear scaling techniques and is optimized towards working with PDB formatted data structures.\\
+To prepare the molecular models, it appears that PYMOL offers a huge range of functions and can be controlled programmatically, which is critical for the preparation of a large, systematic set of mutants.
+It has to be noted, that still molecular modeling and computational screening consists of a lot of customization work, especially for data analysis the output format of the various programs is not very suitable.
+This might also be contributing to preventing quantum chemical methods from becoming more popular in industrial environments.
+Docking methods for example are implemented in software which is designed towards user friendlyness and have established themselves in industry.
+Another project is GTKDynamo which looks very promising, but which sofar however is supported only by a small community\cite{bachega2013gtkdynamo}.
 % *************************************************************************
 
 

@@ -16,6 +16,13 @@ Agresti, J.~J., Antipov, E., Abate, A.~R., Ahn, K., Rowat, A.~C., Baret, J.-C.,
   directed evolution,} \emph{Proceedings of the National Academy of Sciences}
   \textbf{107}, 9, pp. 4004--4009.
 
+\bibitem[{Bachega \emph{et~al.}(2013)Bachega, Timmers, Assirati, Bachega, Field
+  and Wymore}]{bachega2013gtkdynamo}
+Bachega, J. F.~R., Timmers, L. F.~S., Assirati, L., Bachega, L.~R., Field,
+  M.~J. and Wymore, T. (2013). \enquote{Gtkdynamo: A pymol plug-in for qc/mm
+  hybrid potential simulations,} \emph{Journal of computational chemistry}
+  \textbf{34}, 25, pp. 2190--2196.
+
 \bibitem[{Bajpai(1999)}]{bajpai1999application}
 Bajpai, P. (1999). \enquote{Application of enzymes in the pulp and paper
   industry,} \emph{Biotechnology Progress} \textbf{15}, 2, pp. 147--157.
@@ -29,13 +36,6 @@ Bornscheuer, U.~T. and Kazlauskas, R.~J. (2004). \enquote{Catalytic promiscuity
   in biocatalysis: using old enzymes to form new bonds and follow new
   pathways,} \emph{Angewandte Chemie International Edition} \textbf{43}, 45,
   pp. 6032--6040.
-
-\bibitem[{Buch \emph{et~al.}(2011)Buch, Giorgino and
-  De~Fabritiis}]{buch2011complete}
-Buch, I., Giorgino, T. and De~Fabritiis, G. (2011). \enquote{Complete
-  reconstruction of an enzyme-inhibitor binding process by molecular dynamics
-  simulations,} \emph{Proceedings of the National Academy of Sciences}
-  \textbf{108}, 25, pp. 10184--10189.
 
 \bibitem[{Buchert \emph{et~al.}(1994)Buchert, Tenkanen, Kantelinen and
   Viikari}]{buchert1994application}
@@ -200,13 +200,6 @@ Ragauskas, A.~J., Williams, C.~K., Davison, B.~H., Britovsek, G., Cairney, J.,
   \emph{et~al.} (2006). \enquote{The path forward for biofuels and
   biomaterials,} \emph{science} \textbf{311}, 5760, pp. 484--489.
 
-\bibitem[{Rathore \emph{et~al.}(2013)Rathore, Sumakanth, Reddy, Reddanna, Rao,
-  Erion and Reddy}]{rathore2013advances}
-Rathore, R., Sumakanth, M., Reddy, M.~S., Reddanna, P., Rao, A.~A., Erion,
-  M.~D. and Reddy, M. (2013). \enquote{Advances in binding free energies
-  calculations: Qm/mm-based free energy perturbation method for drug design,}
-  \emph{Current pharmaceutical design} \textbf{19}, 26, pp. 4674--4686.
-
 \bibitem[{Rez{\'a}c \emph{et~al.}(2009)Rez{\'a}c, Fanfrlik, Salahub and
   Hobza}]{rezac2009semiempirical}
 Rez{\'a}c, J., Fanfrlik, J., Salahub, D. and Hobza, P. (2009).
@@ -241,6 +234,10 @@ Schmid, A., Hollmann, F., Park, J.~B. and B{\"u}hler, B. (2002). \enquote{The
 Siegbahn, P.~E. and Himo, F. (2009). \enquote{Recent developments of the
   quantum chemical cluster approach for modeling enzyme reactions,} \emph{JBIC
   Journal of Biological Inorganic Chemistry} \textbf{14}, 5, pp. 643--651.
+
+\bibitem[{Stewart(1990)}]{stewart1990mopac}
+Stewart, J. (1990). \enquote{Mopac: a semiempirical molecular orbital program,}
+  \emph{Journal of Computer-Aided Molecular Design} \textbf{4}, 1, pp. 1--103.
 
 \bibitem[{Stewart(1996)}]{stewart1996application}
 Stewart, J. (1996). \enquote{{Application of localized molecular orbitals to
