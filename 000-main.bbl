@@ -1,4 +1,4 @@
-\begin{thebibliography}{46}
+\begin{thebibliography}{47}
 \newcommand{\enquote}[1]{#1}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
@@ -75,6 +75,12 @@ Gayot, S., Santarelli, X. and Coulon, D. (2003). \enquote{Modification of
   flavonoid using lipase in non-conventional media: effect of the water
   content,} \emph{Journal of biotechnology} \textbf{101}, 1, pp. 29--36.
 
+\bibitem[{Goodsell \emph{et~al.}(1996)Goodsell, Morris and
+  Olson}]{goodsell1996automated}
+Goodsell, D., Morris, G. and Olson, A. (1996). \enquote{Automated docking of
+  flexible ligands: applications of autodock,} \emph{Journal of Molecular
+  Recognition} \textbf{9}, 1, pp. 1--5.
+
 \bibitem[{Gotor-Fern{\'a}ndez \emph{et~al.}(2006)Gotor-Fern{\'a}ndez, Busto and
   Gotor}]{gotor2006candida}
 Gotor-Fern{\'a}ndez, V., Busto, E. and Gotor, V. (2006). \enquote{Candida
@@ -144,6 +150,11 @@ Liao, R.-Z. and Thiel, W. (2012). \enquote{Comparison of qm-only and qm/mm
   models for the mechanism of tungsten-dependent acetylene hydratase,}
   \emph{Journal of Chemical Theory and Computation} \textbf{8}, 10, pp.
   3793--3803.
+
+\bibitem[{Lind and Himo(2013)}]{lind2013quantum}
+Lind, M.~E. and Himo, F. (2013). \enquote{Quantum chemistry as a tool in
+  asymmetric biocatalysis: Limonene epoxide hydrolase test case,}
+  \emph{Angewandte Chemie} \textbf{125}, 17, pp. 4661--4665.
 
 \bibitem[{Lonsdale \emph{et~al.}(2013)Lonsdale, Houghton, Zurek, Bathelt,
   Foloppe, de~Groot, Harvey and Mulholland}]{lonsdale2013quantum}
@@ -294,10 +305,5 @@ Young, D. (2004). \emph{Computational chemistry: a practical guide for applying
 Zhang, Y.-H.~P. (2011). \enquote{What is vital (and not vital) to advance
   economically-competitive biofuels production,} \emph{Process Biochemistry}
   \textbf{46}, 11, pp. 2091--2110.
-
-\bibitem[{Zhou and Caflisch(2010)}]{zhou2010high}
-Zhou, T. and Caflisch, A. (2010). \enquote{{High-Throughput Virtual Screening
-  Using Quantum Mechanical Probes: Discovery of Selective Kinase Inhibitors},}
-  \emph{ChemMedChem} \textbf{5}, 7, pp. 1007--1014.
 
 \end{thebibliography}
